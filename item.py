@@ -11,13 +11,8 @@ class item:
         self.view = view1
         self.discard = discard1
         self.viewText = "Not implemented Yet"
-        self.useText = "Not implemented Yet"
-        self.combineText = "Not implemented Yet"
-        self.eatText = "Not implemented Yet"
-        self.drinkText = "Not implemented Yet"
-        self.pickupText = "Not implemented Yet"
-        self.discardText = "Not implemented Yet"
-        self.unsucessfulText = "attempt was unsucessful"
+        self.sucessfulText = "Attempt was sucessful"
+        self.unsucessfulText = "Attempt was unsucessful"
     
     def printName(self):
         print("Name = ", self.name)
@@ -42,22 +37,25 @@ class item:
         print("discardText = ", self.discardText)
 
     def Pickup(self):
-        return self.pickupText
+        return self.sucessfulText
 
     def View(self):
         return self.viewText
 
     def Use(self):
-        return self.useText
+        return self.sucessfulText
 
     def Combine(self):
-        return self.combineText    
+        return self.sucessfulText    
     
     def Eat(self):
-        return self.eatText
+        return self.sucessfulText
 
     def Drink(self):
-        return self.drinkText
+        return self.sucessfulText
 
     def Discard(self):
-        return self.discardText
+        return self.sucessfulText
+
+    def fail(self):
+        return self.unsucessfulText
