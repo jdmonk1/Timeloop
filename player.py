@@ -43,8 +43,8 @@ class player:
     def Combine(self):
         pass    
     
-    def Eat(self):
-        pass
+    def Eat(self, nutrition):
+        self.hunger = self.hunger + nutrition
 
     def Drink(self):
         pass

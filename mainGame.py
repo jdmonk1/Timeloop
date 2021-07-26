@@ -11,37 +11,41 @@ def test():
     test
 
 def command():
-    command = input("<TimeLoop>")
-    if command == "pickup":
+    query = input("<TimeLoop>")
+    if query == "pickup":
         itemin = input("enter item")
         print(Player.Pickup(itemin))
-    elif command == "view":
+    elif query == "view":
         print(Player.View())
-    elif command == "use":
+    elif query == "use":
         print(Player.Use())
-    elif command == "combine":
+    elif query == "combine":
         print(Player.Combine())
-    elif command == "move":
+    elif query == "move":
         roomin = input("enter room")
         Player.move(roomin)
-    elif command == "eat":
+    elif query == "eat":
         print(Player.Eat())
-    elif command == "drink":
+    elif query == "drink":
         print(Player.Drink())
-    elif command == "discard":
+    elif query == "discard":
         print(Player.Discard())
-    elif command == "backpack":
+    elif query == "backpack":
         Player.viewBackpack()
-    elif command == "room":
+    elif query == "room":
         print(Player.currentRoom.description)
-    elif command == "rooms":
+    elif query == "rooms":
         Player.printAdjacentRoomList()
-    elif command == "quit":
+    elif query == "quit":
         quit = False
-    elif command == "test":
+    elif query == "test":
         test()
     else:
         print("unknown command")
+    
+    if quit:
+        command()
 
-while(quit):
-    command()
+# while(quit):
+#     command()
+command()
