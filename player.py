@@ -1,12 +1,15 @@
 class player:
 
     def __init__(self, initRoom, initLocationName):
-        self.hunger = 100
-        self.thirst = 100
+        self.hunger = 70
+        self.thirst = 40
         self.health = 100
         self.backpack = []
         self.currentRoom = initRoom
         self.currentLocationName = initLocationName
+
+    def status(self):
+        return "health:" + str(self.health) + "\nhunger:" + str(self.hunger) + "\nthirst:" + str(self.thirst)
 
     def move(self, room):
         for i in self.currentRoom.adjacencyList:
@@ -16,47 +19,66 @@ class player:
                         self.currentRoom = j
                         print("moved to ", j.description)
 
-    def Pickup(self, item):
+    def pickup(self, item):
         if self.backpack != []:
-            for i in self.backpack:
-                if item == i.name:
-                    return "item already in backpack"
-                else:
-                    for j in self.currentRoom.itemsList:
-                        if j.name == item:
-                            self.backpack.append(j)
-                            return "Added " + j.name + " to backpack!"
-                    return "item not in room"
+            for j in self.currentRoom.itemsList:
+                if j.name == item:
+                    self.backpack.append(j)
+                    self.currentRoom.itemsList.remove(j)
+                    return "Added " + j.name + " to backpack!"
+            return "item not in room"
         else:
             for j in self.currentRoom.itemsList:
                 if j.name == item:
                     self.backpack.append(j)
+                    self.currentRoom.itemsList.remove(j)
                     return "Added " + j.name + " to backpack!"
             return "item not in room"
                 
-    def View(self):
+    def viewItem(self, item):
+        for i in self.currentRoom.itemsList:
+            if i.name == item:
+                return i.description
+
+    def viewRoom(self):
+        for i in self.currentRoom.itemsList:
+            print(i.name)
+
+    def use(self):
         pass
 
-    def Use(self):
-        pass
-
-    def Combine(self):
+    def combine(self):
         pass    
     
-    def Eat(self, nutrition):
-        self.hunger = self.hunger + nutrition
+    def eat(self, item):
+        if self.backpack != []:
+            for i in self.backpack:
+                if item == i.name:
+                    self.hunger = self.hunger + i.nutrition
+                    self.backpack.remove(i)
+                    if self.hunger > 100:
+                        self.hunger = 100
+                    return "You have eaten " + i.name + ". It gave you " + str(i.nutrition) + " hunger back."
+        
 
-    def Drink(self):
-        pass
+    def drink(self, item):
+        if self.backpack != []:
+            for i in self.backpack:
+                if item == i.name:
+                    self.thirst = self.thirst + i.nutrition
+                    self.backpack.remove(i)
+                    if self.thirst > 100:
+                        self.thirst = 100
+                    return "You have drunk " + i.name + ". It gave you " + str(i.nutrition) + " thirst back."
 
-    def Discard(self):
+    def discard(self):
         pass
 
     def fail(self):
         pass
 
     def viewBackpack(self):
-        print("---")
+        print("You have " + str(len(self.backpack)) + " items in your backpack:\n---")
         for i in self.backpack:
             print(i.name)
         print("---")

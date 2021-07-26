@@ -2,7 +2,7 @@ from france import france
 from player import player
 from room import room
 
-quit = True
+
 France = france()
 France.setupLocation()
 Player = player(France.initRoom, France)
@@ -11,34 +11,40 @@ def test():
     test
 
 def command():
-    query = input("<TimeLoop>")
-    if query == "pickup":
-        itemin = input("enter item")
-        print(Player.Pickup(itemin))
-    elif query == "view":
-        print(Player.View())
-    elif query == "use":
-        print(Player.Use())
-    elif query == "combine":
-        print(Player.Combine())
-    elif query == "move":
-        roomin = input("enter room")
-        Player.move(roomin)
-    elif query == "eat":
-        print(Player.Eat())
-    elif query == "drink":
-        print(Player.Drink())
-    elif query == "discard":
-        print(Player.Discard())
-    elif query == "backpack":
+    quit = True
+    cmd = ""
+    cmd = input("<TimeLoop>")
+    cmd = cmd.split(" ")
+    # print(cmd)
+    if cmd[0] == "pickup" and len(cmd) == 2:
+        print(Player.pickup(cmd[1]))
+    elif cmd == ["status"]:
+        print(Player.status())
+    elif (cmd[0] == "view" or cmd[0] == "v") and len(cmd) == 2:
+        print(Player.viewItem(cmd[1]))
+    elif cmd == ["view"] or cmd == ["v"]:
+        print(Player.viewRoom())
+    elif cmd[0] == "use" and len(cmd) == 2:
+        print(Player.use())
+    elif cmd[0] == "combine" and len(cmd) == 3:
+        print(Player.combine())
+    elif (cmd[0] == "move" or cmd[0] == "m") and len(cmd) == 2:
+        Player.move(cmd[1])
+    elif cmd[0] == "eat" and len(cmd) == 2:
+        print(Player.eat(cmd[1]))
+    elif cmd[0] == "drink" and len(cmd) == 2:
+        print(Player.drink(cmd[1]))
+    elif cmd[0] == "discard" and len(cmd) == 2:
+        print(Player.discard())
+    elif cmd[0] == "backpack" or cmd[0] == "bp" and len(cmd) == 1:
         Player.viewBackpack()
-    elif query == "room":
+    elif cmd == ["room"]:
         print(Player.currentRoom.description)
-    elif query == "rooms":
+    elif cmd == ["rooms"]:
         Player.printAdjacentRoomList()
-    elif query == "quit":
+    elif cmd[0] == "quit":
         quit = False
-    elif query == "test":
+    elif cmd[0] == "test":
         test()
     else:
         print("unknown command")

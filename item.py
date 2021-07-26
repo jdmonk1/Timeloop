@@ -1,6 +1,6 @@
 class item:
 
-    def __init__(self, name, pickup1, use1, combine1, combineKey1, eat1, drink1, view1, discard1):
+    def __init__(self, name, pickup1, use1, combine1, combineKey1, eat1, drink1, view1, discard1, nutrition1, description1):
         self.name = name
         self.pickup = pickup1
         self.use = use1
@@ -10,6 +10,8 @@ class item:
         self.drink = drink1
         self.view = view1
         self.discard = discard1
+        self.nutrition = nutrition1
+        self.description = description1
         self.viewText = "Not implemented Yet"
         self.sucessfulText = "Attempt was sucessful"
         self.unsucessfulText = "Attempt was unsucessful"
@@ -26,6 +28,7 @@ class item:
         print("drink = ", self.drink)
         print("view = ", self.view)
         print("discard = ", self.discard)
+        print("nutrition = ", self.nutrition)
 
     def printText(self):
         print("viewText = ", self.viewText)
