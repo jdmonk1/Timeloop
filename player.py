@@ -49,7 +49,7 @@ class player:
     def Drink(self):
         pass
 
-    def Discard(self, test):
+    def Discard(self):
         pass
 
     def fail(self):
