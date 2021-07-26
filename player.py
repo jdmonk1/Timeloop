@@ -1,8 +1,8 @@
 class player:
 
     def __init__(self, initRoom, initLocationName):
-        self.hunger = 0
-        self.thirst = 0
+        self.hunger = 100
+        self.thirst = 100
         self.health = 100
         self.backpack = []
         self.currentRoom = initRoom
@@ -64,4 +64,28 @@ class player:
     def printAdjacentRoomList(self):
         for i in self.currentRoom.adjacencyList:
             print(i)
+    
+    def hungerTick(self):
+        self.hunger = self.hunger - 1
+        if self.hunger == 30:
+            print("Danger!! You are getting hungry!")
+        if self.hunger == 20:
+            print("Danger!! You are very hungry!")
+        if self.hunger == 10:
+            print("DANGER!!! YOU ARE CRITICALLY HUNGRY!!")
+        if self.hunger == 0:
+            print("You are dead.")
+            self.health = 0
+
+    def thirstTick(self):
+        self.thirst = self.thirst - 1
+        if self.hunger == 30:
+            print("Danger!! You are getting hungry!")
+        if self.hunger == 20:
+            print("Danger!! You are very hungry!")
+        if self.hunger == 10:
+            print("DANGER!!! YOU ARE CRITICALLY HUNGRY!!")
+        if self.hunger == 0:
+            print("You are dead.")
+            self.health = 0
         
