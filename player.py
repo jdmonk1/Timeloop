@@ -71,6 +71,26 @@ class player:
                         self.thirst = 100
                     return "You have drunk " + i.name + ". It gave you " + str(i.nutrition) + " thirst back."
 
+    def talk(self, name):
+        for i in self.currentRoom.NPCList:
+            if i.name == name:
+                while True:
+                    print("--Choices--")
+                    i.getChoices()
+                    print("----------")
+                    com = input("<response to " + name + ">")
+                    for ele in i.dialogueGraph.nodeList:
+                        #print(com, ele.name)
+                        if ele.name == com:
+                            #print("got here")
+                            print("--Person1--")
+                            i.chooseOption(com)
+                            print("-----------")
+                    if com == "see you later... Bye" or com == "quit":
+                        i.reset1()
+                        break
+
+
     def discard(self):
         pass
 

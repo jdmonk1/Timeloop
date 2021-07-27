@@ -42,6 +42,8 @@ def command():
         print(Player.currentRoom.description)
     elif cmd == ["rooms"]:
         Player.printAdjacentRoomList()
+    elif (cmd[0] == "talkto" or cmd[0] == "t") and len(cmd) == 2:
+        Player.talk(cmd[1])
     elif cmd[0] == "quit":
         quit = False
     elif cmd[0] == "test":
