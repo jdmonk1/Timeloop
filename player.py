@@ -79,13 +79,14 @@ class player:
                     i.getChoices()
                     print("----------")
                     com = input("<response to " + name + ">")
-                    for ele in i.dialogueGraph.nodeList:
+                    # for ele in i.dialogueGraph.nodeList:
                         #print(com, ele.name)
-                        if ele.name == com:
-                            #print("got here")
-                            print("--Person1--")
-                            i.chooseOption(com)
-                            print("-----------")
+                    # if ele.name == com:
+                        #print("got here")
+                    com = int(com)
+                    print("--Person1--")
+                    i.chooseOption(com)
+                    print("-----------")
                     if com == "see you later... Bye" or com == "quit":
                         i.reset1()
                         break

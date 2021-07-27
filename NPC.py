@@ -13,8 +13,10 @@ class NPC:
         return self.name
 
     def getChoices(self):
+        counter = 1
         for i in self.dialogueGraph.currentNode.children:
-            print(i.name)
+            print(str(counter) + ") " + i.name)
+            counter = counter + 1
 
     def reset1(self):
         self.dialogueGraph.currentNode = self.dialogueGraph.root

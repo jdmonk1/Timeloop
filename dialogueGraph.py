@@ -17,8 +17,9 @@ class dialogueGraph:
         self.nodeList.remove(node)
 
     def traverseNode(self, node1):
-        print(self.currentNode.response(self.findNode(node1)))
-        self.currentNode = self.findNode(node1)
+        # print(self.currentNode.response(self.findNode(node1)))
+        print(self.currentNode.res[node1-1])
+        self.currentNode = self.currentNode.children[node1-1]
         #print("current node = ", self.currentNode.name)
 
     def findNode(self, node):
