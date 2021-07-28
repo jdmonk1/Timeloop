@@ -64,3 +64,7 @@ class NPCCreator:
         jonathan.dialogueGraph.addNode(old)
         jonathan.dialogueGraph.addNode(bye)
         return jonathan
+
+    def j(self, name1):
+
+        return j
