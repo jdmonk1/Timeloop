@@ -23,9 +23,9 @@ def command():
     elif (cmd[0] == "view" or cmd[0] == "v") and len(cmd) == 2:
         print(Player.viewItem(cmd[1]))
     elif cmd == ["view"] or cmd == ["v"]:
-        print(Player.viewRoom())
-    elif cmd[0] == "use" and len(cmd) == 2:
-        print(Player.use())
+        Player.viewRoom()
+    elif cmd[0] == "use" and len(cmd) == 3:
+        print(Player.use(cmd[1], cmd[2]))
     elif cmd[0] == "combine" and len(cmd) == 3:
         print(Player.combine())
     elif (cmd[0] == "move" or cmd[0] == "m") and len(cmd) == 2:
@@ -46,8 +46,10 @@ def command():
         Player.talk(cmd[1])
     elif cmd[0] == "quit":
         quit = False
-    elif cmd[0] == "test":
-        test()
+    elif cmd[0] == "help" and len(cmd) == 2:
+        Player.help(cmd[1])
+    elif cmd == ["?"]:
+        Player.commands()
     else:
         print("unknown command")
     

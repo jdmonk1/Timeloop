@@ -1,5 +1,6 @@
 from NPCCreator import NPCCreator
 from itemCreator import itemCreator
+from ContainerCreator import ContainerCreator
 from room import room
 from NPC import NPC
 
@@ -32,23 +33,35 @@ class france:
     def setupHotelRoom(self):
         NPCList = []
         itemList = []
+        containerItemList = []
+        containerList = []
         IC = itemCreator()
         NPCC = NPCCreator()
+        CC = ContainerCreator()
         NPCList.append(NPCC.jonathan("person1"))
         NPCList.append(NPCC.jonathan("person2"))
-        itemList.append(IC.key(name="key1", description="An old rusty key. Who knows what it unlocks..."))
-        itemList.append(IC.key(name="key2", description="An old rusty key. Who knows what it unlocks..."))
-        return room("Hotel", itemList, NPCList, [])
+        # itemList.append(IC.key(name="key1", description="An old rusty key. Who knows what it unlocks..."))
+        # itemList.append(IC.key(name="kesy2", description="An old rusty key. Who knows what it unlocks..."))
+        containerItemList = itemList
+        # containerList.append(CC.safe(name="safe", itemList=containerItemList, key=1, description="A safe with a keyhole"))
+        # containerList.append(CC.safe(name="safe2", itemList=containerItemList, key=2, description="A safe with a keyhole"))
+        return room("Hotel", itemList, containerList, NPCList, [])
     
     def setupPantry(self):
         NPCList = []
         itemList = []
+        containerList = []
         IC = itemCreator()
+        containerItemList = []
+        containerItemList.append(IC.jerky(name="jerky", description="A piece of dried jerky."))
+        CC = ContainerCreator()
+        containerList.append(CC.safe(name="safe", itemList=containerItemList, key=1, description="A safe with a keyhole"))
+        itemList.append(IC.key(name="key", description="An old rusty key. Who knows what it unlocks..."))
         itemList.append(IC.jerky(name="jerky", description="A piece of dried jerky."))
         itemList.append(IC.jerky(name="jerky", description="A piece of dried jerky."))
         itemList.append(IC.jerky(name="jerky", description="A piece of dried jerky."))
         itemList.append(IC.waterBottle(name="water_bottle", description="A plastic bottle of water."))
-        return room("Pantry", itemList, NPCList, [])
+        return room("pantry", itemList, containerList, NPCList, [])
 
     def setupHallway(self):
         NPCList = []
@@ -59,7 +72,7 @@ class france:
         NPCList.append(NPCC.jonathan("person4"))
         itemList.append(IC.jerky(name="jerky", description="A piece of dried jerky."))
         # itemList.append(IC.key(name="thing2"))
-        return room("Hallway", itemList, NPCList, [])
+        return room("Hallway", itemList, [], NPCList, [])
 
     def setuproom1(self):
         NPCList = []
@@ -70,7 +83,7 @@ class france:
         NPCList.append(NPCC.jonathan("person6"))
         itemList.append(IC.jerky(name="jerky", description="A piece of dried jerky."))
         itemList.append(IC.waterBottle(name="water_bottle", description="A plastic bottle of water."))
-        return room("Room1", itemList, NPCList, [])
+        return room("Room1", itemList, [], NPCList, [])
 
 
     
