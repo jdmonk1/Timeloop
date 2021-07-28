@@ -53,7 +53,6 @@ class player:
                         print("moved to", j.description)
 
     def pickup(self, item):
-        # if self.backpack != []:
         for j in self.currentRoom.itemsList:
             if j.name == item:
                 self.backpack.append(j)
@@ -67,13 +66,6 @@ class player:
                         i.itemList.remove(j)
                         return colors.GREEN + "Added " + j.name + " to backpack!" + colors.BLACK
         return colors.RED + "item not in room" + colors.BLACK
-        # else:
-        #     for j in self.currentRoom.itemsList:
-        #         if j.name == item:
-        #             self.backpack.append(j)
-        #             self.currentRoom.itemsList.remove(j)
-        #             return colors.GREEN + "Added " + j.name + " to backpack!" + colors.BLACK
-        #     return colors.RED + "item not in room" + colors.BLACK
                 
     def viewItem(self, item):
         for i in self.currentRoom.itemsList:
@@ -144,7 +136,7 @@ class player:
                     print("--Person1--")
                     i.chooseOption(com)
                     print("-----------")
-                    if com == "see you later... Bye" or com == "quit":
+                    if com == "Goodbye" or com == "quit":
                         i.reset1()
                         break
 

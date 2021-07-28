@@ -65,6 +65,18 @@ class NPCCreator:
         jonathan.dialogueGraph.addNode(bye)
         return jonathan
 
-    def j(self, name1):
-
-        return j
+    def James(self, name1):
+        James = NPC(name1)
+        a00 = James.dialogueGraph.createNode("Hello!")
+        a11res = "hi... who are you?"
+        a22 = James.dialogueGraph.createNode("give me what I want")
+        a33res = "NEVER!!"
+        James.dialogueGraph.root.children = [a00,a22]
+        James.dialogueGraph.root.res = [a11res,a33res]
+        James.dialogueGraph.addNode(James.dialogueGraph.root)
+        a44 = James.dialogueGraph.createNode("I am James, and you are...?")
+        a55res = "I am also James... what a coincidence!"
+        a00.children = [a44]
+        a00.res = [a55res]
+        James.dialogueGraph.addNode(a00)
+        return James

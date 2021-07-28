@@ -11,7 +11,7 @@ class Game:
         self.France = france()
         self.France.setupLocation()
         self.Player = player(self.France.initRoom, self.France)
-        self.my_timer = 5
+        self.my_timer = 5000000
         self.countdown_thread = threading.Thread(target=self.timer)
         self.quit = False
 
@@ -20,7 +20,7 @@ class Game:
         self.command()
 
     def timer(self):
-        for x in range(5):
+        for x in range(5000000):
             self.my_timer -= 1
             sleep(.1)
             if self.quit:

@@ -38,8 +38,8 @@ class france:
         IC = itemCreator()
         NPCC = NPCCreator()
         CC = ContainerCreator()
-        NPCList.append(NPCC.jonathan("person1"))
-        NPCList.append(NPCC.jonathan("person2"))
+        NPCList.append(NPCC.James("James"))
+        NPCList.append(NPCC.jonathan("Jonathan"))
         # itemList.append(IC.key(name="key1", description="An old rusty key. Who knows what it unlocks..."))
         # itemList.append(IC.key(name="kesy2", description="An old rusty key. Who knows what it unlocks..."))
         containerItemList = itemList
