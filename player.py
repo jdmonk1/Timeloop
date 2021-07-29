@@ -3,8 +3,8 @@ import sys
 class player:
 
     def __init__(self, initRoom, initLocationName):
-        self.hunger = 40
-        self.thirst = 40
+        self.hunger = 100
+        self.thirst = 100
         self.health = 100
         self.backpack = []
         self.currentRoom = initRoom

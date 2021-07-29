@@ -2,6 +2,7 @@ from colors import colors
 import sys
 from os import system, name
 def hangman():
+    system('cls')
     password = ["n", "e", "v", "e", "r", "g", "o", "n", "n", "a", "g", "i", "v", "e", "y", "o", "u", "u", "p"]
     answers = ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_" ]
     alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
@@ -33,11 +34,9 @@ def hangman():
         elif incorrect.__contains__(char):
             system('cls')
             print(colors.BLUE + "You've already guessed that letter, and it was incorrect." + colors.BLACK)
-            # system('cls')
         elif answers.__contains__(char):
             system('cls')
             print(colors.BLUE + "You've already guessed that letter, and it was correct" + colors.BLACK)
-            # system('cls')
         else:
             if password.__contains__(char):
                 counter = 0
