@@ -108,8 +108,8 @@ class NPCMaker:
     def run(self):
         counter2 = -1
         counter = -1
-        self.nextnextchildrenList = []
-        self.nextnextresList = []
+        # self.nextnextchildrenList = []
+        # self.nextnextresList = []
         counter = -1
         for j in self.nextchildrenList:
             counter2 += 1
@@ -119,15 +119,18 @@ class NPCMaker:
                 com = input("children for " + i + "?")
                 if com == "n":
                     print("...skipping " + i + "...")
-                    continue
+                    #continue
                 self.nextnextchildrenList.append(self.childrenList)
                 self.nextnextresList.append(self.resList)
                 self.childrenList = []
                 self.resList = []
-                self.outputNode(i)
-                self.create(j, self.nextresList[counter2][counter], i)
+                if com != "n":
+                    self.outputNode(i)
+                    self.create(j, self.nextresList[counter2][counter], i)
         self.nextchildrenList = self.nextnextchildrenList
         self.nextresList = self.nextnextresList
+        #self.nextnextchildrenList = []
+        #self.nextnextresList = []
 
     def program(self):
         self.setup()
@@ -136,6 +139,9 @@ class NPCMaker:
             com = input("continue to another Level or done?")
             if com == "n":
                 break
+            if com == "c":
+                self.nextnextchildrenList = []
+                self.nextnextresList = []
 
     def printOutput(self):
         for i in self.output:
