@@ -80,3 +80,51 @@ class NPCCreator:
         a00.res = [a55res]
         James.dialogueGraph.addNode(a00)
         return James
+
+    def Gideon(self, name1):
+        Gideon = NPC(name1)
+        a00 = Gideon.dialogueGraph.createNode("Hallo!!!")
+        a11res = "Who are you?"
+        a22 = Gideon.dialogueGraph.createNode("Hi")
+        a33res = "You stink!"
+        Gideon.dialogueGraph.root.children = [a00,a22]
+        Gideon.dialogueGraph.root.res = [a11res,a33res]
+        Gideon.dialogueGraph.addNode(Gideon.dialogueGraph.root)
+        a44 = Gideon.dialogueGraph.createNode("Nunya")
+        a55res = "Fine if you are so grumpy go away"
+        a66 = Gideon.dialogueGraph.createNode("Bobbert Joe")
+        a77res = "You must have gotten bullied as a kid. Here... Here is a free piece of jerky!"
+        a00.children = [a44,a66]
+        a00.res = [a55res,a77res]
+        Gideon.dialogueGraph.addNode(a00)
+        a1010 = Gideon.dialogueGraph.createNode("Excuse me?")
+        a1111res = "You stink!"
+        a1212 = Gideon.dialogueGraph.createNode("I am hungry!")
+        a1313res = "Hi hungry. I am Gideon."
+        a1414 = Gideon.dialogueGraph.createNode("I know... my eyes are very reflective.")
+        a1515res = "That is rude... :("
+        a22.children = [a1010,a1212,a1414]
+        a22.res = [a1111res,a1313res,a1515res]
+        Gideon.dialogueGraph.addNode(a22)
+        a1818 = Gideon.dialogueGraph.createNode("Your momma's refrigerator stinks.")
+        a1919res = "unfortunatly I have to agree."
+        a2020 = Gideon.dialogueGraph.createNode("chicken wink")
+        a2121res = "shut up!"
+        a1010.children = [a1818,a2020]
+        a1010.res = [a1919res,a2121res]
+        Gideon.dialogueGraph.addNode(a1010)
+        a2424 = Gideon.dialogueGraph.createNode("What are you a middle schooler...?")
+        a2525res = "Born and raised."
+        a2626 = Gideon.dialogueGraph.createNode("Haa Haa... Very funny. Do you have food?")
+        a2727res = "In the pantry dumb dumb."
+        a1212.children = [a2424,a2626]
+        a1212.res = [a2525res,a2727res]
+        Gideon.dialogueGraph.addNode(a1212)
+        a3030 = Gideon.dialogueGraph.createNode("I am sorry... but... Have you taken a shower recently?")
+        a3131res = "What is a shower?"
+        a3232 = Gideon.dialogueGraph.createNode("I am sorry... but... Can you lead me to some food?")
+        a3333res = "In the pantry... WHY do you think it is called a PANTRY!!"
+        a1414.children = [a3030,a3232]
+        a1414.res = [a3131res,a3333res]
+        Gideon.dialogueGraph.addNode(a1414)
+        return Gideon

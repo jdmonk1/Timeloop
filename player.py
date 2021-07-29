@@ -133,12 +133,12 @@ class player:
                     # if ele.name == com:
                         #print("got here")
                     com = int(com)
+                    if com == 0:
+                        i.reset1()
+                        break
                     print("--Person1--")
                     i.chooseOption(com)
                     print("-----------")
-                    if com == "Goodbye" or com == "quit":
-                        i.reset1()
-                        break
 
 
     def discard(self):
