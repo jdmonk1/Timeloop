@@ -1,13 +1,15 @@
 from colors import colors
+import sys
 class player:
 
     def __init__(self, initRoom, initLocationName):
-        self.hunger = 10
+        self.hunger = 40
         self.thirst = 40
         self.health = 100
         self.backpack = []
         self.currentRoom = initRoom
         self.currentLocationName = initLocationName
+        self.dead = False
 
     def status(self):
         ret = ""
@@ -160,24 +162,26 @@ class player:
     def hungerTick(self):
         self.hunger = self.hunger - 1
         if self.hunger == 30:
-            print("Danger!! You are getting hungry!")
+            print(colors.RED + "\nDanger!! You are getting hungry!" + colors.BLACK)
         if self.hunger == 20:
-            print("Danger!! You are very hungry!")
+            print(colors.RED + "\nDanger!! You are very hungry!" + colors.BLACK)
         if self.hunger == 10:
-            print("DANGER!!! YOU ARE CRITICALLY HUNGRY!!")
+            print(colors.RED + "\nDANGER!!! YOU ARE CRITICALLY HUNGRY!! YOU MUST EAT!!" + colors.BLACK)
         if self.hunger == 0:
-            print("You are dead.")
+            print(colors.RED + "\nYou are dead." + colors.BLACK)
             self.health = 0
+            self.dead = True
 
     def thirstTick(self):
         self.thirst = self.thirst - 1
-        if self.hunger == 30:
-            print("Danger!! You are getting hungry!")
-        if self.hunger == 20:
-            print("Danger!! You are very hungry!")
-        if self.hunger == 10:
-            print("DANGER!!! YOU ARE CRITICALLY HUNGRY!!")
-        if self.hunger == 0:
-            print("You are dead.")
+        if self.thirst == 30:
+            print(colors.RED + "\nDanger!! You are getting thirsty!" + colors.BLACK)
+        if self.thirst == 20:
+            print(colors.RED + "\nDanger!! You are very thirsty!" + colors.BLACK)
+        if self.thirst == 10:
+            print(colors.RED + "\nDANGER!!! YOU ARE CRITICALLY thirsty!! YOU MUST FIND WATER!" + colors.BLACK)
+        if self.thirst == 0:
+            print(colors.RED + "\nYou are dead." + colors.BLACK)
             self.health = 0
+            self.dead = True
         

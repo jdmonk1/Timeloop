@@ -1,5 +1,6 @@
 import mainGame
-# import Puzzles
+import Puzzles
+
 # Puzzles.hangman()
 g = mainGame.Game()
 g.begin()
