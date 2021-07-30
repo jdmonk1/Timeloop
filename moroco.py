@@ -6,10 +6,10 @@ from NPC import NPC
 from computer import computer
 
 
-class france:
+class moroco:
 
     def __init__(self, key):
-        self.name = "france"
+        self.name = "Moroco"
         self.roomList = []
         self.timeCost = 0
         self.ticket = key
@@ -51,7 +51,7 @@ class france:
         containerItemList = itemList
         # containerList.append(CC.safe(name="safe", itemList=containerItemList, key=1, description="A safe with a keyhole"))
         # containerList.append(CC.safe(name="safe2", itemList=containerItemList, key=2, description="A safe with a keyhole"))
-        return room("Hotel", itemList, containerList, NPCList, [], computerList)
+        return room("Alleys", itemList, containerList, NPCList, [], computerList)
     
     def setupPantry(self):
         NPCList = []
@@ -90,6 +90,3 @@ class france:
         itemList.append(IC.jerky(name="jerky", description="A piece of dried jerky."))
         itemList.append(IC.waterBottle(name="water_bottle", description="A plastic bottle of water."))
         return room("Room1", itemList, [], NPCList, [], [])
-
-
-    
