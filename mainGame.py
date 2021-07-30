@@ -91,6 +91,8 @@ class Game:
                     print(self.Player.viewItem(cmd[1]))
                 elif cmd == ["view"] or cmd == ["v"]:
                     self.Player.viewRoom()
+                elif cmd == ["use", "computer"]:
+                    self.Player.useComputer(self.Player)
                 elif cmd[0] == "use" and len(cmd) == 3:
                     print(self.Player.use(cmd[1], cmd[2]))
                 elif cmd[0] == "combine" and len(cmd) == 3:

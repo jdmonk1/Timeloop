@@ -92,6 +92,10 @@ class player:
                 if i.name == container:
                     return (i.open(combineKey))
     
+    def useComputer(self, computer):
+        while True:
+            
+    
     def contains(self, element, lst):
         for i in lst:
             if element == i.name:

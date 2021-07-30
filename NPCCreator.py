@@ -127,4 +127,7 @@ class NPCCreator:
         a1414.children = [a3030,a3232]
         a1414.res = [a3131res,a3333res]
         Gideon.dialogueGraph.addNode(a1414)
+        a1818.children = [a00,a22]
+        a1818.res = [a11res,a33res]
+        Gideon.dialogueGraph.addNode(a1818)
         return Gideon
