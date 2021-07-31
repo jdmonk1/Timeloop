@@ -8,7 +8,7 @@ from MyCompleter import MyCompleter
 class test:
 
     def __init__(self):
-        self.keywords = ["hello", "hi", "how are you", "goodbye", "great", "view"]
+        self.keywords = ["pickup","status","view","use","combine","move","eat","drink","discard","backpack","room","rooms","talkto","quit"]
 
     def in1(self, text):
         completer = MyCompleter(self.keywords)
