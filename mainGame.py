@@ -1,7 +1,7 @@
 from france import france
 from moroco import moroco
 from player import player
-from test import test
+#from test import test
 import threading
 from time import *
 from room import room
@@ -13,7 +13,7 @@ import random
 class Game:
 
     def __init__(self):
-        self.test = test()
+        #self.test = test()
         self.key = 0
         self.key2 = 3
         self.key3 = 7
@@ -108,8 +108,9 @@ class Game:
                         self.quit = True
                         break
             else:
-                inthing = colors.BLUE + "<TimeLoop>" + colors.BLACK
-                cmd = self.test.in1(inthing)
+                #inthing = colors.BLUE + "<TimeLoop>" + colors.BLACK
+                #cmd = self.test.in1(inthing)
+                cmd = input(colors.BLUE + "<TimeLoop>" + colors.BLACK)
                 # print(colors.BLUE + "", end="")
                 cmd = cmd.split(" ")
                 if cmd[0] == "pickup" and len(cmd) == 2:

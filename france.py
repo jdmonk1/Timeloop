@@ -45,6 +45,7 @@ class france:
         NPCList.append(NPCC.James("James"))
         NPCList.append(NPCC.jonathan("Jonathan"))
         NPCList.append(NPCC.Gideon("Gideon"))
+        NPCList.append(NPCC.roach(name1="roach"))
         computerList.append(comp)
         # itemList.append(IC.key(name="key1", description="An old rusty key. Who knows what it unlocks..."))
         # itemList.append(IC.key(name="kesy2", description="An old rusty key. Who knows what it unlocks..."))

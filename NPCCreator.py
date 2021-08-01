@@ -1,9 +1,10 @@
 from NPC import NPC
+from animalCreator import animalCreator
 
 class NPCCreator:
 
     def __init__(self):
-        pass
+        self.animalCreator = animalCreator()
 
     def jonathan(self, name1):
         jonathan = NPC(name1)
@@ -131,3 +132,20 @@ class NPCCreator:
         a1818.res = [a11res,a33res]
         Gideon.dialogueGraph.addNode(a1818)
         return Gideon
+
+    def roach(self, name1):
+        ladyanne = self.animalCreator.roach("roach")
+        roach = NPC(name1)
+        roach.animal = ladyanne
+        a00 = roach.dialogueGraph.createNode("Hallo!!!")
+        a11res = "Who are you?"
+        a22 = roach.dialogueGraph.createNode("Hi")
+        a33res = "You stink!"
+        roach.dialogueGraph.root.children = [a00,a22]
+        roach.dialogueGraph.root.res = [a11res,a33res]
+        roach.dialogueGraph.root.decision = [roach.animal.testPrint]
+        roach.dialogueGraph.addNode(roach.dialogueGraph.root)
+        return roach
+
+
+

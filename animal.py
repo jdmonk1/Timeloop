@@ -1,4 +1,4 @@
-from NPC import NPC
+
 
 class animal:
 
@@ -11,11 +11,9 @@ class animal:
         self.drink = drink
         self.consume = consume
         self.attack = attack
-        self.NPC = NPC(self.name)
-
-    def talk(self):
-        while True:
-            pass
+    
+    def testPrint(self):
+        print("hello")
 
 
     

@@ -1,8 +1,8 @@
 import readline
+from MyCompleter import MyCompleter
 # 
 # $pip install pyreadline
 #
-from MyCompleter import MyCompleter
 #from fast_autocomplete import AutoComplete
 
 class test:
