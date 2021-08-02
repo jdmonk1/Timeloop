@@ -17,7 +17,7 @@ class itemCreator:
     def waterBottle(self, name, description, pickup=True, use=False, combine=False, combineKey=-1, eat=False, drink=True, view=True, discard=True, nutrition=50):
         return item(name, pickup, use, combine, combineKey, eat, drink, view, discard, nutrition, description)
 
-    def letter(self, name, description, pickup=True, use=False, combine=False, combineKey=-1, eat=False, drink=False, view=True, discard=False, nutrition=0):
+    def infoLetter(self, name, description, combineKey, pickup=True, use=False, combine=True, eat=False, drink=False, view=True, discard=True, nutrition=0):
         return item(name, pickup, use, combine, combineKey, eat, drink, view, discard, nutrition, description)
 
     def getcombineKey(self):

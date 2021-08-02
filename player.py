@@ -10,6 +10,7 @@ class player:
         self.currentRoom = initRoom
         self.currentLocationName = initLocationName
         self.dead = False
+        self.playerKey = -1
 
     def status(self):
         ret = ""
@@ -81,6 +82,9 @@ class player:
         for i in self.currentRoom.containersList:
             if i.name == item:
                 return i.description
+        for i in self.backpack:
+            if i.name == item:
+                return i.description
 
     def viewRoom(self):
         for i in self.currentRoom.itemsList:
@@ -98,6 +102,10 @@ class player:
             print(colors.CYAN + i.name + colors.BLACK)
 
     def use(self, key, container):
+        if key == -1:
+            for i in self.currentRoom.containersList:
+                if i.name == container:
+                    return (i.open(key))
         combineKey = self.contains(key, self.backpack)
         if combineKey != -1:
             for i in self.currentRoom.containersList:
