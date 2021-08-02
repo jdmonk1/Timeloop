@@ -42,17 +42,21 @@ class france:
         IC = itemCreator()
         NPCC = NPCCreator()
         CC = ContainerCreator()
+        containerItemList.append(IC.letter(name="letter", description="Info"))
+        containerItemList.append(IC.jerky(name="jerky", description="A piece of dried jerky."))
+        containerItemList.append(IC.waterBottle(name="water_bottle", description="A plastic bottle of water."))
+        containerList.append(CC.suitcase(name="suitcase", itemList=containerItemList, key=0, description="My old leather suitcase. The lock's been busted for years."))
         NPCList.append(NPCC.James("James"))
         NPCList.append(NPCC.jonathan("Jonathan"))
         NPCList.append(NPCC.Gideon("Gideon"))
-        NPCList.append(NPCC.roach(name1="roach"))
+        NPCList.append(NPCC.roach(name1="cockroach"))
         computerList.append(comp)
         # itemList.append(IC.key(name="key1", description="An old rusty key. Who knows what it unlocks..."))
         # itemList.append(IC.key(name="kesy2", description="An old rusty key. Who knows what it unlocks..."))
         containerItemList = itemList
         # containerList.append(CC.safe(name="safe", itemList=containerItemList, key=1, description="A safe with a keyhole"))
         # containerList.append(CC.safe(name="safe2", itemList=containerItemList, key=2, description="A safe with a keyhole"))
-        return room("Hotel", itemList, containerList, NPCList, [], computerList)
+        return room("hotel room", itemList, containerList, NPCList, [], computerList)
     
     def setupPantry(self):
         NPCList = []

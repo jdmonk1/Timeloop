@@ -69,8 +69,16 @@ class player:
                         return colors.GREEN + "Added " + j.name + " to backpack!" + colors.BLACK
         return colors.RED + "item not in room" + colors.BLACK
                 
-    def viewItem(self, item):
+    def view(self, item):
         for i in self.currentRoom.itemsList:
+            if i.name == item:
+                return i.description
+        for i in self.currentRoom.containersList:
+            if i.isOpen:
+                for j in i.itemList:
+                    if j.name == item:
+                        return j.description
+        for i in self.currentRoom.containersList:
             if i.name == item:
                 return i.description
 

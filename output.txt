@@ -1,1 +1,1 @@
-testmaingame
+testmaingame'str' object has no attribute 'dead'dead'

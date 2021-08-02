@@ -7,6 +7,9 @@ class ContainerCreator:
     def safe(self, name, itemList, key, description, open=False):
         return container(name, itemList, key, description, open)
     
+    def suitcase(self, name, itemList, key, description, open=True):
+        return container(name, itemList, key, description, open)
+    
     def getCombineKey(self):
         self.combineKey += 1
         return self.combineKey
