@@ -84,6 +84,10 @@ class player:
                 print(colors.GREEN + i.name + colors.BLACK)
                 for j in i.itemList:
                     print(colors.GREEN + "  " + j.name + colors.BLACK)
+        for i in self.currentRoom.NPCList:
+            print(colors.MAGENTA + i.name + colors.BLACK)
+        for i in self.currentRoom.computerList:
+            print(colors.CYAN + i.name + colors.BLACK)
 
     def use(self, key, container):
         combineKey = self.contains(key, self.backpack)
@@ -92,9 +96,33 @@ class player:
                 if i.name == container:
                     return (i.open(combineKey))
     
-    def useComputer(self, computer):
-        while True:
-            pass
+    def useComputer(self, player, locationList, name):
+            find = False
+            counter = 1
+            for computer1 in self.currentRoom.computerList:
+                if computer1.name == name:
+                    find = True
+                    while True:
+                        computer1.updateCurrentLocations(locationList)
+                        computer1.listLocationsOut()
+                        com = input("<where would you like to fly? (enter 0 to leave computer)>")
+                        if com == "0":
+                            break
+                        for i in locationList:
+                            print(i.name, " ", i.ticket)
+                        com2 = input("<what is the ticket number? (enter 0 to leave computer)>")
+                        if com2 == "0":
+                            break
+                        res = computer1.bookAFlight(player, com, com2)
+                        if res == None:
+                            print("not a valid location or key")
+                        else:
+                            print("Success! enjoy your stay in ", com)
+                            return res
+                elif counter == len(self.currentRoom.computerList) and find == False:
+                    print("computer name bad")
+                    return 1
+            
     
     def contains(self, element, lst):
         for i in lst:

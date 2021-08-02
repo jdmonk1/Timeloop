@@ -1,0 +1,1 @@
+testmaingameinvalid literal for int() with base 10: 'e'mo\AppData\Local\Temp\_MEI186722\test\__init__.pyc)

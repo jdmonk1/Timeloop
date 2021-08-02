@@ -1,17 +1,30 @@
 from france import france
+from moroco import moroco
 from player import player
+#from test import test
 import threading
 from time import *
 from room import room
 import sys
 from colors import colors
 from os import system, name
+import random
 
 class Game:
 
     def __init__(self):
-        self.France = france()
+        #self.test = test()
+        self.key = 0
+        self.key2 = 3
+        self.key3 = 7
+        self.listofKeys = []
+        self.Moroco = moroco(self.createLocationKey())
+        self.Moroco.setupLocation()
+        self.France = france(self.createLocationKey())
         self.France.setupLocation()
+        self.locationList = []
+        self.locationList.append(self.France)
+        self.locationList.append(self.Moroco)
         self.Player = player(self.France.initRoom, self.France)
         self.my_timer = 5000000
         self.countdown_thread = threading.Thread(target=self.timer)
@@ -21,6 +34,21 @@ class Game:
         system('cls')
         self.countdown_thread.start()
         self.command()
+
+    def setSeed():
+        num = random.randint(0,1000)
+        random.seed(num)
+
+    def createLocationKey(self):
+        while True:
+            num = random.randint(0,9)
+            self.key += num
+            self.key2 += num
+            self.key3 += num
+            key = (self.key * 10000) + (self.key2 * 100) + self.key3
+            if key not in self.listofKeys:
+                self.listofKeys.append((self.key * 10000) + (self.key2 * 100) + self.key3)
+                return key
 
     def timer(self):
         hungerTicker = 0
@@ -80,6 +108,8 @@ class Game:
                         self.quit = True
                         break
             else:
+                #inthing = colors.BLUE + "<TimeLoop>" + colors.BLACK
+                #cmd = self.test.in1(inthing)
                 cmd = input(colors.BLUE + "<TimeLoop>" + colors.BLACK)
                 # print(colors.BLUE + "", end="")
                 cmd = cmd.split(" ")
@@ -88,11 +118,15 @@ class Game:
                 elif cmd == ["status"]:
                     print(self.Player.status())
                 elif (cmd[0] == "view" or cmd[0] == "v") and len(cmd) == 2:
-                    print(self.Player.viewItem(cmd[1]))
+                    self.Player = self.Player.viewItem(cmd[1])
                 elif cmd == ["view"] or cmd == ["v"]:
                     self.Player.viewRoom()
-                elif cmd == ["use", "computer"]:
-                    self.Player.useComputer(self.Player)
+                elif (cmd[0] == "use" and cmd[1] == "computer") and len(cmd) == 3:
+                    result1 = self.Player.useComputer(self.Player, self.locationList, cmd[2])
+                    if result1 != None:
+                        pass
+                    else:
+                        print("computer not in the room")
                 elif cmd[0] == "use" and len(cmd) == 3:
                     print(self.Player.use(cmd[1], cmd[2]))
                 elif cmd[0] == "combine" and len(cmd) == 3:
@@ -117,6 +151,8 @@ class Game:
                     self.quit = True
                 elif cmd[0] == "help" and len(cmd) == 2:
                     self.Player.help(cmd[1])
+                elif cmd == ["test"]:
+                    self.test.in1("")
                 elif cmd == ["?"]:
                     self.Player.commands()
                 else:

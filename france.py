@@ -8,10 +8,11 @@ from computer import computer
 
 class france:
 
-    def __init__(self):
+    def __init__(self, key):
         self.name = "france"
         self.roomList = []
         self.timeCost = 0
+        self.ticket = key
         self.initRoom = self.setupHotelRoom()
 
     def setupLocation(self):
@@ -37,20 +38,21 @@ class france:
         containerItemList = []
         containerList = []
         computerList = []
-        comp = computer()
+        comp = computer("comp1")
         IC = itemCreator()
         NPCC = NPCCreator()
         CC = ContainerCreator()
         NPCList.append(NPCC.James("James"))
         NPCList.append(NPCC.jonathan("Jonathan"))
         NPCList.append(NPCC.Gideon("Gideon"))
+        NPCList.append(NPCC.roach(name1="roach"))
         computerList.append(comp)
         # itemList.append(IC.key(name="key1", description="An old rusty key. Who knows what it unlocks..."))
         # itemList.append(IC.key(name="kesy2", description="An old rusty key. Who knows what it unlocks..."))
         containerItemList = itemList
         # containerList.append(CC.safe(name="safe", itemList=containerItemList, key=1, description="A safe with a keyhole"))
         # containerList.append(CC.safe(name="safe2", itemList=containerItemList, key=2, description="A safe with a keyhole"))
-        return room("Hotel", itemList, containerList, NPCList, [], [])
+        return room("Hotel", itemList, containerList, NPCList, [], computerList)
     
     def setupPantry(self):
         NPCList = []

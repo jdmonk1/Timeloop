@@ -4,6 +4,7 @@ class node:
         self.name = name
         self.children = []
         self.res = []
+        self.decision = []
 
     def response(self, child):
         counter = 0
