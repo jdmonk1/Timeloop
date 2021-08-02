@@ -94,7 +94,7 @@ class player:
     
     def useComputer(self, computer):
         while True:
-            
+            pass
     
     def contains(self, element, lst):
         for i in lst:
