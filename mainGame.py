@@ -118,7 +118,7 @@ class Game:
                 elif cmd == ["status"]:
                     print(self.Player.status())
                 elif (cmd[0] == "view" or cmd[0] == "v") and len(cmd) == 2:
-                    self.Player = self.Player.viewItem(cmd[1])
+                    print(self.Player.viewItem(cmd[1]))
                 elif cmd == ["view"] or cmd == ["v"]:
                     self.Player.viewRoom()
                 elif (cmd[0] == "use" and cmd[1] == "computer") and len(cmd) == 3:
@@ -129,6 +129,8 @@ class Game:
                         print("computer not in the room")
                 elif cmd[0] == "use" and len(cmd) == 3:
                     print(self.Player.use(cmd[1], cmd[2]))
+                elif cmd[0] == "use" and len(cmd) == 2:
+                    print(self.Player.use(self.Player.playerKey, cmd[1]))
                 elif cmd[0] == "combine" and len(cmd) == 3:
                     print(self.Player.combine())
                 elif (cmd[0] == "move" or cmd[0] == "m") and len(cmd) == 2:

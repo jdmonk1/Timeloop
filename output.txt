@@ -1,1 +1,1 @@
-testmaingame
+testmaingamee scanning string literal (france.py, line 57)ter'
