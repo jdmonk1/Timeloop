@@ -1,3 +1,4 @@
+from item import item
 from container import container
 class ContainerCreator:
 
@@ -9,8 +10,8 @@ class ContainerCreator:
 
     def suitCase(self, name, itemList, key, description, open=False):
         return container(name, itemList, key, description, open)
-    
-    def suitcase(self, name, itemList, key, description, open=True):
+
+    def trashCan(self, name, itemList, key, description, open=True):
         return container(name, itemList, key, description, open)
     
     def getCombineKey(self):
