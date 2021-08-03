@@ -140,7 +140,7 @@ class Game:
                 elif cmd[0] == "drink" and len(cmd) == 2:
                     print(self.Player.drink(cmd[1]))
                 elif cmd[0] == "discard" and len(cmd) == 2:
-                    print(self.Player.discard())
+                    self.Player.discard(cmd[1])
                 elif cmd[0] == "backpack" or cmd[0] == "bp" and len(cmd) == 1:
                     self.Player.viewBackpack()
                 elif cmd == ["room"]:

@@ -1,3 +1,4 @@
+from itemCreator import itemCreator
 from colors import colors
 import sys
 class player:
@@ -52,8 +53,45 @@ class player:
             if i == room:
                 for j in self.currentLocationName.roomList:
                     if j.description == room:
-                        self.currentRoom = j
-                        print("moved to", j.description)
+                        if room == "taxi":
+                            cash = 0
+                            fives = 0
+                            tens = 0
+                            for x in self.backpack:
+                                if x.name == "$5":
+                                    cash += 5
+                                    fives += 1
+                                if x.name == "$10":
+                                    cash += 10
+                                    tens += 1
+                            if cash >= 15:
+                                self.currentRoom = j
+                                print(colors.GREEN + "moved to", j.description + colors.BLACK)
+                                if tens >= 1:
+                                    self.backpack.remove(self.findItem("$10"))
+                                    if fives == 0:
+                                        self.backpack.remove(self.findItem("$10"))
+                                        self.backpack.append(itemCreator().cash(name="$5", description="5 bucks"))
+                                    else:
+                                        self.backpack.remove(self.findItem("$5"))
+                                else:
+                                    self.backpack.remove(self.findItem("$5"))
+                                    self.backpack.remove(self.findItem("$5"))
+                                    self.backpack.remove(self.findItem("$5"))
+                                return
+                            else:
+                                print(colors.RED + "I don't have the cash to take a taxi. I need $15" + colors.BLACK)
+                                return
+                        else:
+                            self.currentRoom = j
+                            print(colors.GREEN + "moved to", j.description + colors.BLACK)
+                            return
+        print(colors.RED + "\"" + room + "\"" + " is not accessible from this room" + colors.BLACK)
+
+    def findItem(self, name):
+        for i in self.backpack:
+            if i.name == name:
+                return i
 
     def pickup(self, item):
         for j in self.currentRoom.itemsList:
@@ -121,19 +159,19 @@ class player:
                     while True:
                         computer1.updateCurrentLocations(locationList)
                         computer1.listLocationsOut()
-                        com = input("<where would you like to fly? (enter 0 to leave computer)>")
+                        com = input("<where would you like to fly? (enter 0 to leave kiosk)>")
                         if com == "0":
                             break
                         for i in locationList:
                             print(i.name, " ", i.ticket)
-                        com2 = input("<what is the ticket number? (enter 0 to leave computer)>")
+                        com2 = input("<what is the ticket number? (enter 0 to leave kiosk)>")
                         if com2 == "0":
                             break
                         res = computer1.bookAFlight(player, com, com2)
                         if res == None:
                             print("not a valid location or key")
                         else:
-                            print("Success! enjoy your stay in ", com)
+                            print("Success! Enjoy your stay in", com + "!")
                             return res
                 elif counter == len(self.currentRoom.computerList) and find == False:
                     print("computer name bad")
@@ -191,8 +229,16 @@ class player:
                     print("-----------")
 
 
-    def discard(self):
-        pass
+    def discard(self, item):
+        for i in self.backpack:
+            if i.name == item:
+                self.currentRoom.itemsList.append(self.findItem(item))
+                self.backpack.remove(self.findItem(item))
+                print(colors.GREEN + i.name + " has been dropped on the floor" + colors.BLACK)
+                return
+        print(colors.RED + item + " is not in my backpack" + colors.BLACK)
+                
+            
 
     def fail(self):
         pass

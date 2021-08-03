@@ -10,7 +10,7 @@ from computer import computer
 class france:
 
     def __init__(self, key):
-        self.name = "france"
+        self.name = "France"
         self.roomList = []
         self.timeCost = 0
         self.ticket = key
@@ -21,7 +21,16 @@ class france:
         hotel = self.initRoom
         room1 = self.setuproom1()
         room2 = self.setuproom2()
+        room3 = self.setuproom3()
         pantry = self.setupPantry()
+        room4 = self.setuproom4()
+        room5 = self.setuproom5()
+        elevator = self.setupelevator()
+        lobby = self.setupLobby()
+        portico = self.setupProtico()
+        taxi = self.setupTaxi()
+        airport = self.setupAirport()
+
         hallway.adjacencyList.append(room1.description)
         hallway.adjacencyList.append(hotel.description)
         hallway.adjacencyList.append(room2.description)
@@ -30,12 +39,36 @@ class france:
         room1.adjacencyList.append(hallway.description)
         pantry.adjacencyList.append(hotel.description)
         room2.adjacencyList.append(hallway.description)
+        hallway.adjacencyList.append(room3.description)
+        room3.adjacencyList.append(hallway.description)
+        hallway.adjacencyList.append(room5.description)
+        room5.adjacencyList.append(hallway.description)
+        hallway.adjacencyList.append(room4.description)
+        room4.adjacencyList.append(hallway.description)
+        elevator.adjacencyList.append(hallway.description)
+        hallway.adjacencyList.append(elevator.description)
+        elevator.adjacencyList.append(lobby.description)
+        lobby.adjacencyList.append(elevator.description)
+        lobby.adjacencyList.append(portico.description)
+        portico.adjacencyList.append(lobby.description)
+        portico.adjacencyList.append(taxi.description)
+        airport.adjacencyList.append(taxi.description)
+        taxi.adjacencyList.append(airport.description)
+        taxi.adjacencyList.append(portico.description)
+        hotel.adjacencyList.append(taxi.description)
         self.roomList.append(hallway)
         self.roomList.append(hotel)
         self.roomList.append(room1)
         self.roomList.append(pantry)
         self.roomList.append(room2)
-
+        self.roomList.append(room3)
+        self.roomList.append(room5)
+        self.roomList.append(room4)
+        self.roomList.append(elevator)
+        self.roomList.append(lobby)
+        self.roomList.append(portico)
+        self.roomList.append(taxi)
+        self.roomList.append(airport)
 
     def setupHotelRoom(self):
         NPCList = []
@@ -43,10 +76,18 @@ class france:
         containerItemList = []
         containerList = []
         computerList = []
-        comp = computer("comp1")
+        comp = computer("laptop")
         IC = itemCreator()
         NPCC = NPCCreator()
         CC = ContainerCreator()
+        itemList.append(IC.cash(name="$5", description="5 bucks"))
+        itemList.append(IC.cash(name="$5", description="5 bucks"))
+        itemList.append(IC.cash(name="$5", description="5 bucks"))
+        itemList.append(IC.cash(name="$5", description="5 bucks"))
+        itemList.append(IC.cash(name="$10", description="5 bucks"))
+        itemList.append(IC.cash(name="$10", description="5 bucks"))
+        itemList.append(IC.cash(name="$10", description="5 bucks"))
+
         for i in range(7):
             containerItemList.append(IC.jerky(name="jerky", description="A piece of dried jerky."))
         for i in range(7):
@@ -113,7 +154,7 @@ class france:
         containerItemList.append(IC.infoLetter(name="letter", description="Lab Info"))
         containerItemList.append(IC.paperclip(name="paper_clip", description="An aluminum paperclip. It's bent out of shape and is probably useless."))
         containerItemList.append(IC.spoolOfThread(name="spool_of_thread", description="The thread looks completely unused, but it's pretty bad quality. It could be used to tie something in a pinch, but it wouldn't hold for long."))
-        containerItemList.append(IC.cash(name="$10_bill", description="Good ol' American cash. Good for $10."))
+        containerItemList.append(IC.cash(name="$10", description="10 bucks"))
         containerList.append(CC.trashCan(name="trash_can", itemList=containerItemList, key=0, description="A plastic trash bin... not much to write home about."))
         return room("Room2", itemList, containerList, [], [], [])
 
@@ -123,7 +164,96 @@ class france:
         containerList = []
         IC = itemCreator()
         CC = ContainerCreator()
+        containerItemList = []
+        itemList.append(IC.cash(name="$5", description="5 bucks"))
+        containerItemList.append(IC.ticket(name="plane_ticket", description="A plane ticket"))
+        containerList.append(CC.safe(name="safe", itemList=containerItemList, key=1, description="A safe with a keyhole"))
+        return room("room3", itemList, containerList, [], [], [])
 
+    def setuproom4(self):
+        NPCList = []
+        itemList = []
+        containerList = []
+        IC = itemCreator()
+        CC = ContainerCreator()
+        containerItemList = []
+        # itemList.append(IC.cash(name="$5", description="5 bucks"))
+        itemList.append(IC.brush(name="brush", description="A simple, red hairbrush."))
+        containerItemList.append(IC.cash(name="$5", description="5 bucks"))
+        containerList.append(CC.trashCan(name="trash_can", itemList=containerItemList, key=1, description="A safe with a keyhole"))
+        return room("room4", itemList, containerList, [], [], [])
 
+    def setuproom5(self):
+        NPCList = []
+        itemList = []
+        containerList = []
+        IC = itemCreator()
+        CC = ContainerCreator()
+        containerItemList = []
+        # itemList.append(IC.cash(name="$5", description="5 bucks"))
+        # containerItemList.append(IC.ticket(name="plane_ticket", description="A plane ticket"))
+        # containerList.append(CC.safe(name="safe", itemList=containerItemList, key=1, description="A safe with a keyhole"))
+        return room("room5", itemList, containerList, [], [], [])    
 
+    def setupelevator(self):
+        NPCList = []
+        itemList = []
+        containerList = []
+        IC = itemCreator()
+        CC = ContainerCreator()
+        containerItemList = []
+        # itemList.append(IC.cash(name="$5", description="5 bucks"))
+        # containerItemList.append(IC.ticket(name="plane_ticket", description="A plane ticket"))
+        # containerList.append(CC.safe(name="safe", itemList=containerItemList, key=1, description="A safe with a keyhole"))
+        return room("elevator", itemList, containerList, [], [], []) 
+
+    def setupLobby(self):
+        NPCList = []
+        itemList = []
+        containerList = []
+        IC = itemCreator()
+        CC = ContainerCreator()
+        containerItemList = []
+        # itemList.append(IC.cash(name="$5", description="5 bucks"))
+        # containerItemList.append(IC.ticket(name="plane_ticket", description="A plane ticket"))
+        # containerList.append(CC.safe(name="safe", itemList=containerItemList, key=1, description="A safe with a keyhole"))
+        return room("lobby", itemList, containerList, [], [], []) 
+    
+    def setupProtico(self):
+        NPCList = []
+        itemList = []
+        containerList = []
+        IC = itemCreator()
+        CC = ContainerCreator()
+        containerItemList = []
+        # itemList.append(IC.cash(name="$5", description="5 bucks"))
+        # containerItemList.append(IC.ticket(name="plane_ticket", description="A plane ticket"))
+        # containerList.append(CC.safe(name="safe", itemList=containerItemList, key=1, description="A safe with a keyhole"))
+        return room("hotel_portico", itemList, containerList, [], [], []) 
+
+    def setupTaxi(self):
+        NPCList = []
+        itemList = []
+        containerList = []
+        IC = itemCreator()
+        CC = ContainerCreator()
+        containerItemList = []
+        # itemList.append(IC.cash(name="$5", description="5 bucks"))
+        # containerItemList.append(IC.ticket(name="plane_ticket", description="A plane ticket"))
+        # containerList.append(CC.safe(name="safe", itemList=containerItemList, key=1, description="A safe with a keyhole"))
+        return room("taxi", itemList, containerList, [], [], []) 
+
+    def setupAirport(self):
+        NPCList = []
+        itemList = []
+        containerList = []
+        computerList = []
+        computerList.append(computer(name="Kiosk"))
+        IC = itemCreator()
+        CC = ContainerCreator()
+        containerItemList = []
+        # itemList.append(IC.cash(name="$5", description="5 bucks"))
+        # containerItemList.append(IC.ticket(name="plane_ticket", description="A plane ticket"))
+        # containerList.append(CC.safe(name="safe", itemList=containerItemList, key=1, description="A safe with a keyhole"))
+        return room("airport", itemList, containerList, [], [], computerList) 
     
