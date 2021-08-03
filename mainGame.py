@@ -9,6 +9,7 @@ import sys
 from colors import colors
 from os import system, name
 import random
+from London import London
 
 class Game:
 
@@ -20,11 +21,14 @@ class Game:
         self.listofKeys = []
         self.Moroco = moroco(self.createLocationKey())
         self.Moroco.setupLocation()
+        self.London = London(self.createLocationKey())
+        self.London.setupLocation()
         self.France = france(self.createLocationKey())
         self.France.setupLocation()
         self.locationList = []
         self.locationList.append(self.France)
         self.locationList.append(self.Moroco)
+        self.locationList.append(self.London)
         self.Player = player(self.France.initRoom, self.France)
         self.my_timer = 5000000
         self.countdown_thread = threading.Thread(target=self.timer)

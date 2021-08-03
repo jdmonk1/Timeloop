@@ -35,6 +35,12 @@ class itemCreator:
     def brush(self, name, description, pickup=True, use=False, combine=False, combineKey=-1, eat=False, drink=False, view=True, discard=True, nutrition=0):
         return item(name, pickup, use, combine, combine, eat, drink, view, discard, nutrition, description)
 
+    def phone(self, name, description, pickup=True, use=False, combine=False, combineKey=-1, eat=False, drink=False, view=True, discard=True, nutrition=-0):
+        return item(name, pickup, use, combine, combineKey, eat, drink, view, discard, nutrition, description)
+
+    def usb(self, name, description, pickup=True, use=False, combine=False, combineKey=-1, eat=False, drink=False, view=True, discard=True, nutrition=-0):
+        return item(name, pickup, use, combine, combineKey, eat, drink, view, discard, nutrition, description)
+    
     def getcombineKey(self):
         self.combineKey += 1
         return self.combineKey
