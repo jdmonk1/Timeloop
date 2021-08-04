@@ -139,12 +139,24 @@ class NPCCreator:
         roach.animal = ladyanne
         a00 = roach.dialogueGraph.createNode("Hallo!!!")
         a11res = "Who are you?"
-        a22 = roach.dialogueGraph.createNode("Hi")
-        a33res = "You stink!"
-        roach.dialogueGraph.root.children = [a00,a22]
-        roach.dialogueGraph.root.res = [a11res,a33res]
-        roach.dialogueGraph.root.decision = [roach.animal.testPrint]
+
+        a33 = roach.dialogueGraph.createNode("Hi")
+        a44res = "You stink!"
+
+        roach.dialogueGraph.root.children = [a00,a33]
+        roach.dialogueGraph.root.res = [a11res,a44res]
+        roach.dialogueGraph.root.descision = []
         roach.dialogueGraph.addNode(roach.dialogueGraph.root)
+        a66 = roach.dialogueGraph.createNode("Nunya")
+        a77res = "Fine if you are so grumpy go away"
+
+        a99 = roach.dialogueGraph.createNode("Bobbert Joe")
+        a1010res = "You must have gotten bullied as a kid. Here... Here is a free piece of jerky!"
+        a1111des = roach.animal.testPrint
+        a00.children = [a66,a99]
+        a00.res = [a77res,a1010res]
+        a00.decision = [a1111des]
+        roach.dialogueGraph.addNode(a00)
         return roach
 
 

@@ -15,6 +15,11 @@ class NPCMaker:
         self.prevprevresList = []
         self.silentchildrenList = []
         self.silentresList = []
+        self.desList = []
+        self.silentdesList = []
+        self.nextdesList = []
+        self.nextnextdesList = []
+        self.des = []
         self.name = ""
         self.var = "a"
         self.num = -1
@@ -39,24 +44,48 @@ class NPCMaker:
         self.varList.append(res)
         return self.var + str(self.num) + str(self.wide) + "res = " + "\"" + res + "\""
 
-    def createRoot(self,childrenList, resList):
+    def createDes(self,des):
+        self.num = self.num + 1
+        self.wide += 1
+        if des != "":
+            self.desList.append(self.var + str(self.num) + str(self.wide) + "des")
+            self.varList.append(self.var + str(self.num) + str(self.wide) + "des")
+            self.varList.append(des)
+            return self.var + str(self.num) + str(self.wide) + "des = " + des
+        else:
+            self.desList.append("")
+            self.varList.append(self.var + str(self.num) + str(self.wide) + "des")
+            self.varList.append(des)
+            return ""
+
+    def createRoot(self,childrenList, resList, desList):
         children = ""
         res = ""
+        des = ""
         for i in childrenList:
             children += i + ","
         children = children[:-1]
         for i in resList:
             res += i + ","
         res = res[:-1]
-        return self.name + ".dialogueGraph.root.children = [" + children + "]\n" + self.name + ".dialogueGraph.root.res = [" + res + "]\n" + self.name + ".dialogueGraph.addNode(" + self.name + ".dialogueGraph.root)"
+        for i in desList:
+            if i != "":
+                des += i + ","
+        des = des[:-1]
+        return self.name + ".dialogueGraph.root.children = [" + children + "]\n" + self.name + ".dialogueGraph.root.res = [" + res + "]\n" + self.name + ".dialogueGraph.root.decision = [" + des + "]\n" + self.name + ".dialogueGraph.addNode(" + self.name + ".dialogueGraph.root)"
 
-    def custom(self, param, param2):
+    def custom(self, param, param2, param3):
         self.silentchildrenList.append(param)
         self.silentresList.append(param2)
+        self.silentdesList.append(param3)
+        self.varList.append(param)
+        self.varList.append(param2)
+        self.varList.append(param3)
 
     def getNode(self):
         intro = []
         res = []
+        des = []
         while True:
             comfirst = "p"
             while comfirst == "p":
@@ -67,16 +96,27 @@ class NPCMaker:
                 thing = input("enter loop var")
                 # self.custom(thing)
                 thing2 = input("enter res var")
-                self.custom(thing,thing2)
+                thing3 = input("enter des var or nothing")
+                if thing3 == "":
+                    thing4 = []
+                else:
+                    thing4 = thing3
+                self.custom(thing,thing2,thing4)
                 break
             else:
                 intro.append(comfirst)
                 comfirst = input("enter response")
                 res.append(comfirst)
+                comfirst = input("enter descision or nothing")
+                # if comfirst == "":
+                #     thing4 = ""
+                # else:
+                #     thing4 = comfirst
+                des.append(comfirst)
             com = input("another choice?")
             if com == "n":
                 break
-        return (intro, res)
+        return [intro, res, des]
 
     def outputNodeRoot(self):
         self.name = input("enter NPC name")
@@ -85,7 +125,9 @@ class NPCMaker:
         for i in range(len(output[0])):
             self.output.append(self.createNode(output[0][i]))
             self.output.append(self.createRes(output[1][i]))
-        self.output.append(self.createRoot(self.childrenList, self.resList))
+            #print(output[2])
+            self.output.append(self.createDes(output[2][i]))
+        self.output.append(self.createRoot(self.childrenList, self.resList, self.desList))
 
     def outputNode(self, ii):
         self.childrenList = []
@@ -94,7 +136,8 @@ class NPCMaker:
         for i in range(len(output[0])):
             self.output.append(self.createNode(output[0][i]))
             self.output.append(self.createRes(output[1][i]))
-        self.output.append(self.create(self.childrenList, self.resList, ii))
+            self.output.append(self.createDes(output[2][i]))
+        self.output.append(self.create(self.childrenList, self.resList, self.desList, ii))
 
     # def createLoop(self,childrenList,resList, ii):
     #     self.num += 1
@@ -109,11 +152,12 @@ class NPCMaker:
     #     res = res[:-1]
     #     return ii + ".children = [" + children + "]\n" + ii + ".res = [" + res + "]\n" + self.name + ".dialogueGraph.addNode(" + ii + ")"
 
-    def create(self,childrenList, resList, ii):
+    def create(self,childrenList, resList, desList, ii):
         self.num += 1
         self.wide += 1
         children = ""
         res = ""
+        des = ""
         for i in childrenList:
             children += i + ","
         children = children[:-1]
@@ -131,14 +175,25 @@ class NPCMaker:
                 res += i
             else:
                 res += "," + i
-        return ii + ".children = [" + children + "]\n" + ii + ".res = [" + res + "]\n" + self.name + ".dialogueGraph.addNode(" + ii + ")"
+        for i in desList:
+            des += i + ","
+        des = des[:-1]
+        for i in self.silentdesList:
+            if len(desList) == 0:
+                des += i
+            else:
+                des += "," + i
+        self.silentdesList = []
+        return ii + ".children = [" + children + "]\n" + ii + ".res = [" + res + "]\n" + ii + ".descision = [" + des + "]\n" + self.name + ".dialogueGraph.addNode(" + ii + ")"
 
     def setup(self):
         self.outputNodeRoot()
         self.nextchildrenList.append(self.childrenList)
         self.nextresList.append(self.resList)
+        self.nextdesList.append(self.desList)
         self.childrenList = []
         self.resList = []
+        self.desList = []
 
     def run(self):
         counter2 = -1
@@ -157,13 +212,17 @@ class NPCMaker:
                     #continue
                 if com != "n":
                     self.outputNode(i)
-                    self.create(j, self.nextresList[counter2][counter], i)
+                    self.create(j, self.nextresList[counter2][counter], self.nextdesList[counter2][counter], i)
                     self.nextnextchildrenList.append(self.childrenList)
                     self.nextnextresList.append(self.resList)
+                    self.nextnextdesList.append(self.desList)
+                    self.desList = []
                     self.childrenList = []
                     self.resList = []
         self.nextchildrenList = self.nextnextchildrenList
         self.nextresList = self.nextnextresList
+        self.nextdesList = self.nextnextdesList
+        self.nextnextdesList = []
         self.nextnextchildrenList = []
         self.nextnextresList = []
 

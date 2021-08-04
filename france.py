@@ -127,7 +127,7 @@ class france:
         itemList = []
         IC = itemCreator()
         NPCC = NPCCreator()
-        NPCList.append(NPCC.jonathan("person3"))
+        NPCList.append(NPCC.roach("roach"))
         NPCList.append(NPCC.jonathan("person4"))
         itemList.append(IC.jerky(name="jerky", description="A piece of dried jerky."))
         return room("Hallway", itemList, [], NPCList, [], [])

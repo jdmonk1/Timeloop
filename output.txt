@@ -1,1 +1,1 @@
-testmaingametrashCan() missing 1 required positional argument: 'key'mbineKey'
+testmaingameinvalid literal for int() with base 10: 'quit'ent: 'key'mbineKey'
