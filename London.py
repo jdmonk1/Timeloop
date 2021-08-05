@@ -70,7 +70,7 @@ class London:
 
     def setupLobby(self):
         computerList = []
-        return room("airport", [], [], [], [], computerList)
+        return room("lobby", [], [], [], [], computerList)
 
     def setupCoffeeShop(self):
         return room("coffee_shop", [], [], [], [], [])

@@ -87,6 +87,8 @@ class france:
         itemList.append(IC.cash(name="$10", description="5 bucks"))
         itemList.append(IC.cash(name="$10", description="5 bucks"))
         itemList.append(IC.cash(name="$10", description="5 bucks"))
+        NPCList.append(NPCC.Gideon("Gideon"))
+
 
         for i in range(7):
             containerItemList.append(IC.jerky(name="jerky", description="A piece of dried jerky."))
@@ -130,7 +132,7 @@ class france:
         NPCList.append(NPCC.roach("roach"))
         NPCList.append(NPCC.jonathan("person4"))
         itemList.append(IC.jerky(name="jerky", description="A piece of dried jerky."))
-        return room("Hallway", itemList, [], NPCList, [], [])
+        return room("hallway", itemList, [], NPCList, [], [])
 
     def setuproom1(self):
         NPCList = []
@@ -141,7 +143,7 @@ class france:
         NPCList.append(NPCC.jonathan("person6"))
         itemList.append(IC.jerky(name="jerky", description="A piece of dried jerky."))
         itemList.append(IC.waterBottle(name="water_bottle", description="A plastic bottle of water."))
-        return room("Room1", itemList, [], NPCList, [], [])
+        return room("room1", itemList, [], NPCList, [], [])
     
     def setuproom2(self):
         NPCList = []
@@ -156,7 +158,7 @@ class france:
         containerItemList.append(IC.spoolOfThread(name="spool_of_thread", description="The thread looks completely unused, but it's pretty bad quality. It could be used to tie something in a pinch, but it wouldn't hold for long."))
         containerItemList.append(IC.cash(name="$10", description="10 bucks"))
         containerList.append(CC.trashCan(name="trash_can", itemList=containerItemList, key=0, description="A plastic trash bin... not much to write home about."))
-        return room("Room2", itemList, containerList, [], [], [])
+        return room("room2", itemList, containerList, [], [], [])
 
     def setuproom3(self):
         NPCList = []

@@ -184,9 +184,17 @@ class player:
                 return i.combineKey
         return -1
 
-    def combine(self):
-        pass    
-    
+    def combine(self, item1, item2):
+        for i in self.backpack:
+            if i.name == item1:
+                for j in self.backpack:
+                    if j.name == item2:
+                        if i.combineKey == j.combineKey and i.combine and j.combine:
+                            if (item1 == "rock" and item2 == "stick") or (item1 == "stick" and item2 == "rock"):
+                                self.backpack.remove(i)
+                                self.backpack.remove(j)
+                                self.backpack.append(itemCreator().hammer(name="hammer", description="A makeshift hammer. Not the prettiest, but in a jam I could definitely smash something with this."))
+                                print(colors.GREEN + "I combined " + item1 + " and " + item2 + " into a hammer!!" + colors.BLACK)
     def eat(self, item):
         if self.backpack != []:
             for i in self.backpack:

@@ -136,7 +136,7 @@ class Game:
                 elif cmd[0] == "use" and len(cmd) == 2:
                     print(self.Player.use(self.Player.playerKey, cmd[1]))
                 elif cmd[0] == "combine" and len(cmd) == 3:
-                    print(self.Player.combine())
+                    self.Player.combine(cmd[1], cmd[2])
                 elif (cmd[0] == "move" or cmd[0] == "m") and len(cmd) == 2:
                     self.Player.move(cmd[1])
                 elif cmd[0] == "eat" and len(cmd) == 2:

@@ -40,6 +40,15 @@ class itemCreator:
 
     def usb(self, name, description, pickup=True, use=False, combine=False, combineKey=-1, eat=False, drink=False, view=True, discard=True, nutrition=-0):
         return item(name, pickup, use, combine, combineKey, eat, drink, view, discard, nutrition, description)
+
+    def hammerHead(self, name, description, pickup=True, use=False, combine=True, combineKey=10, eat=False, drink=False, view=True, discard=True, nutrition=-0):
+        return item(name, pickup, use, combine, combineKey, eat, drink, view, discard, nutrition, description)
+
+    def stick(self, name, description, pickup=True, use=False, combine=True, combineKey=10, eat=False, drink=False, view=True, discard=True, nutrition=-0):
+        return item(name, pickup, use, combine, combineKey, eat, drink, view, discard, nutrition, description)
+
+    def hammer(self, name, description, pickup=True, use=True, combine=False, combineKey=50, eat=False, drink=False, view=True, discard=True, nutrition=-0):
+        return item(name, pickup, use, combine, combineKey, eat, drink, view, discard, nutrition, description)
     
     def getcombineKey(self):
         self.combineKey += 1
