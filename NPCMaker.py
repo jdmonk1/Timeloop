@@ -65,13 +65,29 @@ class NPCMaker:
         for i in childrenList:
             children += i + ","
         children = children[:-1]
+        for i in self.silentchildrenList:
+            if len(childrenList) == 0:
+                children += i
+            else:
+                children += "," + i
+        self.silentchildrenList = []
         for i in resList:
             res += i + ","
         res = res[:-1]
+        for i in self.silentresList:
+            if len(resList) == 0:
+                res += i
+            else:
+                res += "," + i
         for i in desList:
-            if i != "":
-                des += i + ","
+            des += i + ","
         des = des[:-1]
+        for i in self.silentdesList:
+            if len(desList) == 0:
+                des += i
+            else:
+                des += "," + i
+        self.silentdesList = []
         return self.name + ".dialogueGraph.root.children = [" + children + "]\n" + self.name + ".dialogueGraph.root.res = [" + res + "]\n" + self.name + ".dialogueGraph.root.decision = [" + des + "]\n" + self.name + ".dialogueGraph.addNode(" + self.name + ".dialogueGraph.root)"
 
     def custom(self, param, param2, param3):
@@ -98,7 +114,7 @@ class NPCMaker:
                 thing2 = input("enter res var")
                 thing3 = input("enter des var or nothing")
                 if thing3 == "":
-                    thing4 = []
+                    thing4 = ""
                 else:
                     thing4 = thing3
                 self.custom(thing,thing2,thing4)
@@ -107,7 +123,7 @@ class NPCMaker:
                 intro.append(comfirst)
                 comfirst = input("enter response")
                 res.append(comfirst)
-                comfirst = input("enter descision or nothing")
+                comfirst = input("enter decision or nothing")
                 # if comfirst == "":
                 #     thing4 = ""
                 # else:
@@ -184,7 +200,7 @@ class NPCMaker:
             else:
                 des += "," + i
         self.silentdesList = []
-        return ii + ".children = [" + children + "]\n" + ii + ".res = [" + res + "]\n" + ii + ".descision = [" + des + "]\n" + self.name + ".dialogueGraph.addNode(" + ii + ")"
+        return ii + ".children = [" + children + "]\n" + ii + ".res = [" + res + "]\n" + ii + ".decision = [" + des + "]\n" + self.name + ".dialogueGraph.addNode(" + ii + ")"
 
     def setup(self):
         self.outputNodeRoot()
