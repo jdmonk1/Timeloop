@@ -14,6 +14,7 @@ class france:
         self.roomList = []
         self.timeCost = 0
         self.ticket = key
+        self.dougKey = 500
         self.initRoom = self.setupHotelRoom()
 
     def setupLocation(self):
@@ -127,7 +128,7 @@ class france:
         itemList = []
         IC = itemCreator()
         NPCC = NPCCreator()
-        NPCList.append(NPCC.roach("roach"))
+        NPCList.append(NPCC.Doug("Doug"))
         NPCList.append(NPCC.jonathan("person4"))
         itemList.append(IC.jerky(name="jerky", description="A piece of dried jerky."))
         return room("Hallway", itemList, [], NPCList, [], [])

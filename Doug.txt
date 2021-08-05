@@ -1,0 +1,16 @@
+Doug
+I like your dog. Is it a Golden Retriever?
+Yes it is. Actually I was about to go on a walk with my dog.
+
+
+Hi! how are you. I am in a bit of a pinch. could you spot me 10 dollars?
+Who do you take me for? I am not the bank of Paris? Sorry you will have to find your money elsewhere.
+
+
+Hello! what time is it?
+It is...
+self.animal.testPrint
+
+
+
+

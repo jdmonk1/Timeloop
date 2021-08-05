@@ -159,5 +159,25 @@ class NPCCreator:
         roach.dialogueGraph.addNode(a00)
         return roach
 
+    def Doug(self, name1):
+        Doug = NPC(name1)
+        ladyanne = self.animalCreator.roach("roach")
+        Doug.animal = ladyanne
+        a00 = Doug.dialogueGraph.createNode("HI!")
+        a11res = "Hello."
+
+        Doug.dialogueGraph.root.children = [a00]
+        Doug.dialogueGraph.root.res = [a11res]
+        Doug.dialogueGraph.root.decision = []
+        Doug.dialogueGraph.addNode(Doug.dialogueGraph.root)
+        a33 = Doug.dialogueGraph.createNode("what time is it?")
+        a44res = "It is..."
+        a55des = Doug.animal.testPrint
+        a00.children = [a33]
+        a00.res = [a44res]
+        a00.decision = [a55des]
+        Doug.dialogueGraph.addNode(a00)
+        return Doug
+
 
 
