@@ -167,20 +167,58 @@ class NPCCreator:
     def Doug(self, name1, itemL):
         Doug = NPC(name1, itemList=itemL)
         self.NPCList.append(Doug)
-        a00 = Doug.dialogueGraph.createNode("HI!")
-        a11res = "Hello."
+        dumby = self.dumby
+        a00 = Doug.dialogueGraph.createNode("I like your dog. Is it a Golden Retriever?")
+        a11res = "Yes it is. Actually I was about to go on a walk with my dog."
 
-        Doug.dialogueGraph.root.children = [a00]
-        Doug.dialogueGraph.root.res = [a11res]
-        Doug.dialogueGraph.root.decision = []
+        a33 = Doug.dialogueGraph.createNode("Hi! how are you. I am in a bit of a pinch. could you spot me 10 dollars?")
+        a44res = "Who do you take me for? I am not the bank of Paris? Sorry you will have to find your money elsewhere."
+
+        a66 = Doug.dialogueGraph.createNode("Hello! what time is it?")
+        a77res = "It is..."
+        a88des = self.timePrintDoug
+        Doug.dialogueGraph.root.children = [a00,a33,a66]
+        Doug.dialogueGraph.root.res = [a11res,a44res,a77res]
+        Doug.dialogueGraph.root.decision = [dumby,dumby,a88des]
         Doug.dialogueGraph.addNode(Doug.dialogueGraph.root)
-        a33 = Doug.dialogueGraph.createNode("what time is it?")
-        a44res = "It is..."
-        a55des = self.dougGiveKey
-        a00.children = [a33]
-        a00.res = [a44res]
-        a00.decision = [a55des]
+        a99 = Doug.dialogueGraph.createNode("I was wondering if you have a seen a key lying around? I lost mine that goes to my safe.")
+        a1010res = "Yes! I found one lying around but how do I know it is yours?"
+
+        a1212 = Doug.dialogueGraph.createNode("Oh okay! sorry! I will let you go.")
+        a1313res = "Thanks... Bye"
+
+        a00.children = [a99,a1212]
+        a00.res = [a1010res,a1313res]
+        a00.decision = [dumby,dumby]
         Doug.dialogueGraph.addNode(a00)
+        a1717 = Doug.dialogueGraph.createNode("wait can you really not help me?")
+        a1818res = "Sure can... Bye"
+
+        a2020 = Doug.dialogueGraph.createNode("Oh okay! No problem. Have a nice day!")
+        a2121res = "Sure thing... Bye"
+
+        a33.children = [a1717,a2020]
+        a33.res = [a1818res,a2121res]
+        a33.decision = [dumby,dumby]
+        Doug.dialogueGraph.addNode(a33)
+        a66.children = [a00,a33,a66]
+        a66.res = [a11res,a44res,a77res]
+        a66.decision = [dumby,dumby,a88des]
+        Doug.dialogueGraph.addNode(a66)
+        a2727 = Doug.dialogueGraph.createNode("It is mine here is my room ticket. See! could you give me my key!")
+        a2828res = "Okay... but I require a finder's reward... 50 dollars should suffice."
+
+        a99.children = [a2727]
+        a99.res = [a2828res,a11res,a44res,a77res]
+        a99.decision = []
+        Doug.dialogueGraph.addNode(a99)
+        a3232 = Doug.dialogueGraph.createNode("Okay here is the 50 dollars... Can I have my key back?")
+        a3333res = "Thanks... here it is... Bye."
+        a3434des = self.dougGiveKey
+        a2727.children = [a3232]
+        a2727.res = [a3333res,a11res,a44res,a77res]
+        a2727.decision = [a3434des]
+        Doug.dialogueGraph.addNode(a2727)
 
         return Doug
 
@@ -191,3 +229,6 @@ class NPCCreator:
         for d in self.NPCList:
             if d.name == "Doug":
                 d.itemToPlayer(item, costtype, cost)
+
+    def dumby(self):
+        pass

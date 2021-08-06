@@ -19,7 +19,8 @@ class dialogueGraph:
     def traverseNode(self, node1):
         # print(self.currentNode.response(self.findNode(node1)))
         print(self.currentNode.res[node1-1])
-        for i in self.currentNode.decision:
+        if self.currentNode.decision != []:
+            i = self.currentNode.decision[node1-1]
             ret = i()
             if ret == None:
                 pass

@@ -9,8 +9,29 @@ Who do you take me for? I am not the bank of Paris? Sorry you will have to find 
 
 Hello! what time is it?
 It is...
-self.animal.testPrint
+self.timePrintDoug
+n
+
+I was wondering if you have a seen a key lying around? I lost mine that goes to my safe.
+Yes! I found one lying around but how do I know it is yours?
 
 
+Oh okay! sorry! I will let you go.
+Thanks... Bye
+
+n
+
+wait can you really not help me?
+Sure can... Bye
 
 
+Oh okay! No problem. Have a nice day!
+Sure thing... Bye
+
+n
+
+c
+a00,a33,a66
+a11res,a44res,a77res
+dumby,dumby,a88des
+n

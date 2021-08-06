@@ -1,1 +1,1 @@
-testmaingamelist.remove(x): x not in listositional argument: 'itemL''costtype' and 'cost'62)
+testmaingamesyntax (NPCCreator.py, line 182)ase 10: 'quit't: 'itemL''costtype' and 'cost'62)

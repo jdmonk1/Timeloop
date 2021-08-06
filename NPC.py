@@ -55,11 +55,11 @@ class NPC:
                 if x.name == "$10":
                     cash += 10
                     tens += 1
-            print(cash)
-            print(tens)
-            print(fives)
+            #print(cash)
+            #print(tens)
+            #print(fives)
             if cash >= cost:
-                while cost > 0:
+                while cost >= 0:
                     if tens >= 1 and cost - 10 > 0:
                         self.backpack.remove(self.findItem("$10"))
                         tens -= 1
@@ -70,7 +70,7 @@ class NPC:
                         tens -= 1
                         fives += 1
                         cost -= 5
-                    elif tens == 0 and fives >= 1 and cost - 5 > 0:
+                    elif tens == 0 and fives >= 1 and cost - 5 >= 0:
                         self.backpack.remove(self.findItem("$5"))
                         fives -= 1
                         cost -= 5
@@ -79,16 +79,16 @@ class NPC:
                     else:
                         for i in self.itemList:
                             if i.name == name:
-                                print("here")
+                                #print("here")
                                 self.itemList.remove(i)
-                                print("here2")
+                                #print("here2")
                                 self.itemForPlayer.append(i)
-                                print("here3")
-                        print("you gave " + cash + " to " + self.name)
-                        break
+                                #print("here3")
+                        print("you gave " + str(cash) + " to " + self.name)
+                        return
             else:
                 print(colors.RED + "I don't have the right cash!" + colors.BLACK)
-                return self.backpack
+                return
 
         if costtype == "item":
             pass
