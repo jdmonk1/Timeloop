@@ -16,6 +16,7 @@ class france:
         self.ticket = key
         self.dougKey = 500
         self.initRoom = self.setupHotelRoom()
+        #self.my_timer = 0
 
     def setupLocation(self):
         hallway = self.setupHallway()
@@ -31,6 +32,7 @@ class france:
         portico = self.setupProtico()
         taxi = self.setupTaxi()
         airport = self.setupAirport()
+        #self.my_timer = timer
 
         hallway.adjacencyList.append(room1.description)
         hallway.adjacencyList.append(hotel.description)
@@ -88,7 +90,6 @@ class france:
         itemList.append(IC.cash(name="$10", description="5 bucks"))
         itemList.append(IC.cash(name="$10", description="5 bucks"))
         itemList.append(IC.cash(name="$10", description="5 bucks"))
-        NPCList.append(NPCC.Gideon("Gideon"))
 
 
         for i in range(7):
@@ -128,10 +129,11 @@ class france:
     def setupHallway(self):
         NPCList = []
         itemList = []
+        DougItems = []
         IC = itemCreator()
         NPCC = NPCCreator()
-        NPCList.append(NPCC.Doug("Doug"))
-        NPCList.append(NPCC.jonathan("person4"))
+        DougItems.append(IC.key(name="key", description="A key from Doug"))
+        NPCList.append(NPCC.Doug("Doug", itemL=DougItems))
         itemList.append(IC.jerky(name="jerky", description="A piece of dried jerky."))
         return room("hallway", itemList, [], NPCList, [], [])
 
@@ -140,8 +142,6 @@ class france:
         itemList = []
         IC = itemCreator()
         NPCC = NPCCreator()
-        NPCList.append(NPCC.jonathan("person5"))
-        NPCList.append(NPCC.jonathan("person6"))
         itemList.append(IC.jerky(name="jerky", description="A piece of dried jerky."))
         itemList.append(IC.waterBottle(name="water_bottle", description="A plastic bottle of water."))
         return room("room1", itemList, [], NPCList, [], [])

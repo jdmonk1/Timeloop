@@ -1,1 +1,1 @@
-testmaingamelist index out of rangeo attribute 'name'mal''ent: 'key'mbineKey'
+testmaingamelist.remove(x): x not in listositional argument: 'itemL''costtype' and 'cost'62)

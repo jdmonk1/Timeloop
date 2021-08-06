@@ -9,6 +9,7 @@ import sys
 from colors import colors
 from os import system, name
 import random
+import timerGlob
 from London import London
 
 class Game:
@@ -19,6 +20,7 @@ class Game:
         self.key2 = 3
         self.key3 = 7
         self.listofKeys = []
+        #timerGlob.my_timer = 5000000
         self.Moroco = moroco(self.createLocationKey())
         self.Moroco.setupLocation()
         self.London = London(self.createLocationKey())
@@ -30,7 +32,6 @@ class Game:
         self.locationList.append(self.Moroco)
         self.locationList.append(self.London)
         self.Player = player(self.France.initRoom, self.France)
-        self.my_timer = 5000000
         self.countdown_thread = threading.Thread(target=self.timer)
         self.quit = False
 
@@ -58,7 +59,7 @@ class Game:
         hungerTicker = 0
         thirstTicker = 0
         for x in range(5000000):
-            self.my_timer -= 1
+            timerGlob.my_timer -= 1
             sleep(.1)
             if self.quit:
                 break
@@ -99,7 +100,7 @@ class Game:
                 thirstTicker = 0
         if not self.quit:
             print("\n24 hours have passed. You wake up back in your bed in France.\nPress Enter to continue")
-            self.my_timer = 5
+            timerGlob.my_timer = 5
             self.timer()
 
     def command(self):
@@ -120,6 +121,7 @@ class Game:
                 if cmd[0] == "pickup" and len(cmd) == 2:
                     print(self.Player.pickup(cmd[1]))
                 elif cmd == ["status"]:
+                    print("time:", timerGlob.my_timer)
                     print(self.Player.status())
                 elif (cmd[0] == "view" or cmd[0] == "v") and len(cmd) == 2:
                     print(self.Player.view(cmd[1]))

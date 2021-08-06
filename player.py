@@ -12,6 +12,7 @@ class player:
         self.currentLocationName = initLocationName
         self.dead = False
         self.playerKey = -1
+        self.playerToNPC = []
 
     def status(self):
         ret = ""
@@ -232,9 +233,14 @@ class player:
                     if com == 0:
                         i.reset1()
                         break
-                    print("--Person1--")
-                    i.chooseOption(com)
+                    print("--" + i.name + "--")
+                    self.backpack = i.chooseOption(com, self.backpack, self.currentRoom)
+                    for ii in i.itemForPlayer:
+                        self.backpack.append(ii)
                     print("-----------")
+                    if i.retChoices() == []:
+                        i.reset1()
+                        break
 
 
     def discard(self, item):

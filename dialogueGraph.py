@@ -20,7 +20,9 @@ class dialogueGraph:
         # print(self.currentNode.response(self.findNode(node1)))
         print(self.currentNode.res[node1-1])
         for i in self.currentNode.decision:
-            i()
+            ret = i()
+            if ret == None:
+                pass
         self.currentNode = self.currentNode.children[node1-1]
         #print("current node = ", self.currentNode.name)
 

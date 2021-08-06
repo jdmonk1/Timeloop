@@ -14,9 +14,11 @@ class London:
         self.timeCost = 0
         self.ticket = key
         self.initRoom = self.setupAirport()
+        #self.my_timer = 0
 
     def setupLocation(self):
         airport = self.initRoom
+        #self.my_timer = timer
         subwayStation = self.setupSubwayStation()
         governmentBuilding = self.setupGovernmentBuilding()
         printerRoom = self.setupPrinterRoom()

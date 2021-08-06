@@ -1,10 +1,15 @@
+from itemCreator import itemCreator
 from NPC import NPC
 from animalCreator import animalCreator
+import timerGlob
+from colors import colors
+from itemCreator import itemCreator
 
 class NPCCreator:
 
     def __init__(self):
         self.animalCreator = animalCreator()
+        self.NPCList = []
 
     def jonathan(self, name1):
         jonathan = NPC(name1)
@@ -66,8 +71,8 @@ class NPCCreator:
         jonathan.dialogueGraph.addNode(bye)
         return jonathan
 
-    def James(self, name1):
-        James = NPC(name1)
+    def James(self, name1, itemL):
+        James = NPC(name1, itemL)
         a00 = James.dialogueGraph.createNode("Hello!")
         a11res = "hi... who are you?"
         a22 = James.dialogueGraph.createNode("give me what I want")
@@ -82,8 +87,8 @@ class NPCCreator:
         James.dialogueGraph.addNode(a00)
         return James
 
-    def Gideon(self, name1):
-        Gideon = NPC(name1)
+    def Gideon(self, name1, itemL):
+        Gideon = NPC(name1, itemL)
         a00 = Gideon.dialogueGraph.createNode("Hallo!!!")
         a11res = "Who are you?"
         a22 = Gideon.dialogueGraph.createNode("Hi")
@@ -133,9 +138,9 @@ class NPCCreator:
         Gideon.dialogueGraph.addNode(a1818)
         return Gideon
 
-    def roach(self, name1):
+    def roach(self, name1, itemL):
         ladyanne = self.animalCreator.roach("roach")
-        roach = NPC(name1)
+        roach = NPC(name1, itemL)
         roach.animal = ladyanne
         a00 = roach.dialogueGraph.createNode("Hallo!!!")
         a11res = "Who are you?"
@@ -159,10 +164,9 @@ class NPCCreator:
         roach.dialogueGraph.addNode(a00)
         return roach
 
-    def Doug(self, name1):
-        Doug = NPC(name1)
-        ladyanne = self.animalCreator.roach("roach")
-        Doug.animal = ladyanne
+    def Doug(self, name1, itemL):
+        Doug = NPC(name1, itemList=itemL)
+        self.NPCList.append(Doug)
         a00 = Doug.dialogueGraph.createNode("HI!")
         a11res = "Hello."
 
@@ -172,12 +176,18 @@ class NPCCreator:
         Doug.dialogueGraph.addNode(Doug.dialogueGraph.root)
         a33 = Doug.dialogueGraph.createNode("what time is it?")
         a44res = "It is..."
-        a55des = Doug.animal.testPrint
+        a55des = self.dougGiveKey
         a00.children = [a33]
         a00.res = [a44res]
         a00.decision = [a55des]
         Doug.dialogueGraph.addNode(a00)
+
         return Doug
 
-
-
+    def timePrintDoug(self, item="key"):
+        print(timerGlob.my_timer)
+        
+    def dougGiveKey(self, item="key",costtype="cash", cost=50):    
+        for d in self.NPCList:
+            if d.name == "Doug":
+                d.itemToPlayer(item, costtype, cost)

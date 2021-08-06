@@ -14,8 +14,10 @@ class moroco:
         self.timeCost = 0
         self.ticket = key
         self.initRoom = self.setupAirport()
+        #self.my_timer = 0
 
     def setupLocation(self):
+        #self.my_timer = timer
         airport = self.initRoom
         streets = self.setupStreets()
         hut1 = self.setupHut1()

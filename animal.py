@@ -1,5 +1,5 @@
 
-
+import timerGlob
 class animal:
 
     def __init__(self, move, talk, ride, eat, drink, consume, attack, name):
@@ -13,7 +13,9 @@ class animal:
         self.attack = attack
     
     def testPrint(self):
-        print("hello")
+        print(timerGlob.my_timer)
+
+    
 
 
     
