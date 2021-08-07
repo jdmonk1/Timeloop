@@ -1,1 +1,1 @@
-testmaingamejanitor() got an unexpected keyword argument 'name'temL''costtype' and 'cost'62)
+testmaingamelist.remove(x): x not in listeyword argument 'name'temL''costtype' and 'cost'62)

@@ -235,8 +235,10 @@ class player:
                         break
                     print("--" + i.name + "--")
                     self.backpack = i.chooseOption(com, self.backpack, self.currentRoom)
-                    for ii in i.itemForPlayer:
-                        self.backpack.append(ii)
+                    if i.itemForPlayer != []:
+                        for ii in i.itemForPlayer:
+                            self.backpack.append(ii)
+                            i.itemForPlayer.remove(ii)
                     print("-----------")
                     if i.retChoices() == []:
                         i.reset1()

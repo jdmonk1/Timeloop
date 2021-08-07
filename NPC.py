@@ -91,6 +91,7 @@ class NPC:
                 return
 
         if costtype == "item":
+            il = self.itemList
             #print("got here")
             count = 0
             thing = None
@@ -98,10 +99,11 @@ class NPC:
                 if i.name == cost:
                     thing = i
                     #print("got back item")
-                    for it in self.itemList:
-                        for n in name:
-                            if it.name == n:
-                                count += 1
+            for it in il:
+                for n in name:
+                    if it.name == n:
+                        count += 1
+                        break
             #print("got here2")
             if count == len(name):
                 self.backpack.remove(thing)
@@ -109,6 +111,7 @@ class NPC:
                     for n in name:
                         if it.name == n:
                             self.backpack.append(it)
+                            break
                 print("Thanks!")
             else:
                 print("You do not have what I want. I want " + cost)
