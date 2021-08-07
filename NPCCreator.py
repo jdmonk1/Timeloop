@@ -222,6 +222,93 @@ class NPCCreator:
 
         return Doug
 
+    def janitor(self, name1, itemL):
+        janitor = NPC(name1, itemList=itemL)
+        self.NPCList.append(janitor)
+        dumby = self.dumby
+
+        a00 = janitor.dialogueGraph.createNode("hey! what's up?")
+        a11res = "I am doing good... now where did I put that...."
+
+        a33 = janitor.dialogueGraph.createNode("Hi! I am looking for the airport. Do you happen to know where that is?")
+        a44res = "Yeah, I know. It is just down the hallway. take the elevator to the lobby and then go out on the portico and take a taxi."
+
+        a66 = janitor.dialogueGraph.createNode("Hello! what time is it?")
+        a77res = "It is..."
+        a88des = self.timePrintDoug
+        janitor.dialogueGraph.root.children = [a00,a33,a66]
+        janitor.dialogueGraph.root.res = [a11res,a44res,a77res]
+        janitor.dialogueGraph.root.decision = [dumby,dumby,a88des]
+        janitor.dialogueGraph.addNode(janitor.dialogueGraph.root)
+        a99 = janitor.dialogueGraph.createNode("What are you looking for?")
+        a1010res = "I am looking for a spool of thread... Good grief... Were did I put it..."
+
+        a00.children = [a99]
+        a00.res = [a1010res]
+        a00.decision = [dumby]
+        janitor.dialogueGraph.addNode(a00)
+        a1414 = janitor.dialogueGraph.createNode("Hey is that it on the ground?")
+        a1515res = "No... That is a dust bunny... Thanks for looking though... My boss will have my head if I cannot find it."
+
+        a1717 = janitor.dialogueGraph.createNode("Hey do you think you could spot me some money?")
+        a1818res = "No... I am too busy to help right now... You will have to find some one else."
+
+        a99.children = [a1414,a1717]
+        a99.res = [a1515res,a1818res]
+        a99.decision = [dumby,dumby]
+        janitor.dialogueGraph.addNode(a99)
+        a2222 = janitor.dialogueGraph.createNode("(give the janitor a spool of thread)")
+        a2323res = ""
+        a2424des = self.janitorGiveItem
+        a1414.children = [a2222]
+        a1414.res = [a2323res]
+        a1414.decision = [a2424des]
+        janitor.dialogueGraph.addNode(a1414)
+
+        return janitor
+
+    def jannet(self, name1, itemL):
+        Jannet = NPC(name1, itemList=itemL)
+        self.NPCList.append(Jannet)
+        dumby = self.dumby
+
+        a00 = Jannet.dialogueGraph.createNode("Hi Jannet how are you today!")
+        a11res = "Hi! I was doing good until I droped this mans brush into this pile of goo."
+
+        Jannet.dialogueGraph.root.children = [a00]
+        Jannet.dialogueGraph.root.res = [a11res]
+        Jannet.dialogueGraph.root.decision = [dumby]
+        Jannet.dialogueGraph.addNode(Jannet.dialogueGraph.root)
+        a33 = Jannet.dialogueGraph.createNode("You could probably clean it off. He probably wont notice and you could be on your way. Here... I will show you.")
+        a44res = "I could loose my job over that... No way I am doing that thank you very much."
+
+        a66 = Jannet.dialogueGraph.createNode("I have got a joke... knock knock...")
+        a77res = "who is there... seriously... :("
+
+        a99 = Jannet.dialogueGraph.createNode("What time is it?")
+        a1010res = "It is..."
+        a1111des = self.timePrintDoug
+        a00.children = [a33,a66,a99]
+        a00.res = [a44res,a77res,a1010res]
+        a00.decision = [dumby,dumby,a1111des]
+        Jannet.dialogueGraph.addNode(a00)
+        a1414 = Jannet.dialogueGraph.createNode("brush...")
+        a1515res = "brush who... oh wait do you have a brush I could have?"
+
+        a66.children = [a1414]
+        a66.res = [a1515res]
+        a66.decision = [dumby]
+        Jannet.dialogueGraph.addNode(a66)
+        a1919 = Jannet.dialogueGraph.createNode("(hand a brush to jannet)")
+        a2020res = ""
+        a2121des = self.jannetGiveItem
+        a1414.children = [a1919]
+        a1414.res = [a2020res]
+        a1414.decision = [a2121des]
+        Jannet.dialogueGraph.addNode(a1414)
+
+        return Jannet
+
     def timePrintDoug(self, item="key"):
         print(timerGlob.my_timer)
         
@@ -229,6 +316,16 @@ class NPCCreator:
         for d in self.NPCList:
             if d.name == "Doug":
                 d.itemToPlayer(item, costtype, cost)
+
+    def janitorGiveItem(self, item=["$10", "$10", "$5"], costtype="item", cost="spool_of_thread"):
+        for j in self.NPCList:
+            if j.name == "janitor":
+                j.itemToPlayer(item, costtype, cost)
+
+    def jannetGiveItem(self, item=["$10", "$5"], costtype="item", cost="brush"):
+        for j in self.NPCList:
+            if j.name == "jannet":
+                j.itemToPlayer(item, costtype, cost)
 
     def dumby(self):
         pass

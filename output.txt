@@ -1,1 +1,1 @@
-testmaingamesyntax (NPCCreator.py, line 182)ase 10: 'quit't: 'itemL''costtype' and 'cost'62)
+testmaingamejanitor() got an unexpected keyword argument 'name'temL''costtype' and 'cost'62)

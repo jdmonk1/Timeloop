@@ -1,0 +1,38 @@
+janitor
+hey! what's up?
+I am doing good... now where did I put that....
+
+
+Hi! I am looking for the airport. Do you happen to know where that is?
+Yeah, I know. It is just down the hallway. take the elevator to the lobby and then go out on the portico and take a taxi.
+
+
+Hello! what time is it?
+It is...
+self.timePrintDoug
+n
+
+What are you looking for?
+I am looking for a spool of thread... Good grief... Were did I put it...
+
+n
+n
+n
+
+
+Hey is that it on the ground?
+No... That is a dust bunny... Thanks for looking though... My boss will have my head if I cannot find it.
+
+
+Hey do you think you could spot me some money?
+No... I am too busy to help right now... You will have to find some one else.
+
+n
+
+
+(give the janitor a spool of thread)
+
+self.janitorGiveItem
+n
+n
+n

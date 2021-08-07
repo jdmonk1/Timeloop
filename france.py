@@ -79,6 +79,7 @@ class france:
         containerItemList = []
         containerList = []
         computerList = []
+        
         comp = computer("laptop")
         IC = itemCreator()
         NPCC = NPCCreator()
@@ -87,10 +88,9 @@ class france:
         itemList.append(IC.cash(name="$5", description="5 bucks"))
         itemList.append(IC.cash(name="$5", description="5 bucks"))
         itemList.append(IC.cash(name="$5", description="5 bucks"))
-        itemList.append(IC.cash(name="$10", description="5 bucks"))
-        itemList.append(IC.cash(name="$10", description="5 bucks"))
-        itemList.append(IC.cash(name="$10", description="5 bucks"))
-
+        itemList.append(IC.cash(name="$10", description="10 bucks"))
+        itemList.append(IC.cash(name="$10", description="10 bucks"))
+        itemList.append(IC.cash(name="$10", description="10 bucks"))
 
         for i in range(7):
             containerItemList.append(IC.jerky(name="jerky", description="A piece of dried jerky."))
@@ -129,19 +129,19 @@ class france:
     def setupHallway(self):
         NPCList = []
         itemList = []
-        DougItems = []
         IC = itemCreator()
         NPCC = NPCCreator()
-        DougItems.append(IC.key(name="key", description="A key from Doug"))
-        NPCList.append(NPCC.Doug("Doug", itemL=DougItems))
         itemList.append(IC.jerky(name="jerky", description="A piece of dried jerky."))
         return room("hallway", itemList, [], NPCList, [], [])
 
     def setuproom1(self):
         NPCList = []
         itemList = []
+        DougItems = []
         IC = itemCreator()
         NPCC = NPCCreator()
+        DougItems.append(IC.key(name="key", description="A key from Doug"))
+        NPCList.append(NPCC.Doug("Doug", itemL=DougItems))
         itemList.append(IC.jerky(name="jerky", description="A piece of dried jerky."))
         itemList.append(IC.waterBottle(name="water_bottle", description="A plastic bottle of water."))
         return room("room1", itemList, [], NPCList, [], [])
@@ -169,7 +169,7 @@ class france:
         CC = ContainerCreator()
         containerItemList = []
         itemList.append(IC.cash(name="$5", description="5 bucks"))
-        containerItemList.append(IC.ticket(name="plane_ticket", description="A plane ticket"))
+        containerItemList.append(IC.ticket(name="plane_ticket", description="A plane ticket with the number ..."))
         containerList.append(CC.safe(name="safe", itemList=containerItemList, key=1, description="A safe with a keyhole"))
         return room("room3", itemList, containerList, [], [], [])
 
@@ -177,26 +177,37 @@ class france:
         NPCList = []
         itemList = []
         containerList = []
+        jannetItems = []
         IC = itemCreator()
         CC = ContainerCreator()
+        NPCC = NPCCreator()
         containerItemList = []
+        jannetItems.append(IC.cash(name="$10", description="10 bucks"))
+        jannetItems.append(IC.cash(name="$5", description="5 bucks"))
+        NPCList.append(NPCC.jannet(name1="jannet", itemL=jannetItems))
         # itemList.append(IC.cash(name="$5", description="5 bucks"))
         itemList.append(IC.brush(name="brush", description="A simple, red hairbrush."))
         containerItemList.append(IC.cash(name="$5", description="5 bucks"))
         containerList.append(CC.trashCan(name="trash_can", itemList=containerItemList, key=1, description="A safe with a keyhole"))
-        return room("room4", itemList, containerList, [], [], [])
+        return room("room4", itemList, containerList, NPCList, [], [])
 
     def setuproom5(self):
         NPCList = []
         itemList = []
         containerList = []
+        janitorItems = []
         IC = itemCreator()
         CC = ContainerCreator()
+        NPCC = NPCCreator()
         containerItemList = []
+        janitorItems.append(IC.cash(name="$10", description="10 bucks"))
+        janitorItems.append(IC.cash(name="$10", description="10 bucks"))
+        janitorItems.append(IC.cash(name="$5", description="5 bucks"))
+        NPCList.append(NPCC.janitor(name1="janitor", itemL=janitorItems))
         # itemList.append(IC.cash(name="$5", description="5 bucks"))
         # containerItemList.append(IC.ticket(name="plane_ticket", description="A plane ticket"))
         # containerList.append(CC.safe(name="safe", itemList=containerItemList, key=1, description="A safe with a keyhole"))
-        return room("room5", itemList, containerList, [], [], [])    
+        return room("room5", itemList, containerList, NPCList, [], [])    
 
     def setupelevator(self):
         NPCList = []

@@ -1,0 +1,33 @@
+Jannet
+Hi Jannet how are you today!
+Hi! I was doing good until I droped this mans brush into this pile of goo.
+
+n
+
+You could probably clean it off. He probably wont notice and you could be on your way. Here... I will show you.
+I could loose my job over that... No way I am doing that thank you very much.
+
+
+I have got a joke... knock knock...
+who is there... seriously... :(
+
+
+What time is it?
+It is...
+self.timePrintDoug
+n
+
+n
+
+brush...
+brush who... oh wait do you have a brush I could have?
+
+n
+n
+
+
+(hand a brush to jannet)
+
+self.jannetGiveItem
+n
+n

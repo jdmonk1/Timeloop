@@ -34,4 +34,20 @@ c
 a00,a33,a66
 a11res,a44res,a77res
 dumby,dumby,a88des
+
+
+It is mine here is my room ticket. See! could you give me my key!
+Okay... but I require a finder's reward... 50 dollars should suffice.
+
 n
+n
+n
+n
+
+
+Okay here is the 50 dollars... Can I have my key back?
+Thanks... here it is... Bye.
+self.dougGiveKey
+n
+n
+

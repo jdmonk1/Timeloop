@@ -91,7 +91,27 @@ class NPC:
                 return
 
         if costtype == "item":
-            pass
+            #print("got here")
+            count = 0
+            thing = None
+            for i in self.backpack:
+                if i.name == cost:
+                    thing = i
+                    #print("got back item")
+                    for it in self.itemList:
+                        for n in name:
+                            if it.name == n:
+                                count += 1
+            #print("got here2")
+            if count == len(name):
+                self.backpack.remove(thing)
+                for it in self.itemList:
+                    for n in name:
+                        if it.name == n:
+                            self.backpack.append(it)
+                print("Thanks!")
+            else:
+                print("You do not have what I want. I want " + cost)
 
     def itemFromPlayer(self, item):
         for i in item:
